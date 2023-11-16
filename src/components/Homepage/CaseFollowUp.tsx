@@ -16,7 +16,7 @@ const CaseFollowUp = () => {
           <img
             src="/images/residency-request-card.png"
             alt="residency request card"
-            className="absolute w-[528px] right-0 bottom-0 -mr-24"
+            className="absolute w-[500px] right-0 bottom-0 -mr-24"
           />
           <img src="/images/dashboard-bg.png" alt="dashboard background" className="w-4/5" />
         </div>
