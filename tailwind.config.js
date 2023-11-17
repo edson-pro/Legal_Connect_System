@@ -13,7 +13,7 @@ export default {
           gray: "#6B6B6B",
           black: "#343434",
           "light-blue": {
-            default: "#F6FCFF",
+            DEFAULT: "#F6FCFF",
             200: "#E8F7FF",
           },
         },

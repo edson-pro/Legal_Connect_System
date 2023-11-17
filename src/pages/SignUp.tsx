@@ -19,16 +19,16 @@ const SignUp = () => {
       <span className="mt-4">Choose account type</span>
       <form action="" className="flex flex-col mt-8 gap-5">
         <ClickInputField
-          label="Lawyer"
-          iconUrl={justiceIcon}
-          active={selectedRole === "lawyer"}
-          onClick={() => setSelectedRole("lawyer")}
-        />
-        <ClickInputField
           label="Client"
           iconUrl={clientIcon}
           active={selectedRole === "client"}
           onClick={() => setSelectedRole("client")}
+        />
+        <ClickInputField
+          label="Lawyer"
+          iconUrl={justiceIcon}
+          active={selectedRole === "lawyer"}
+          onClick={() => setSelectedRole("lawyer")}
         />
         <Button className="mt-8" onClick={handleNavigation}>
           Continue

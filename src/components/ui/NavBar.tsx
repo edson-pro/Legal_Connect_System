@@ -13,7 +13,9 @@ const NavBar: FC<Props> = ({ variant = "normal" }) => {
 
   return (
     <header
-      className={`py-11 w-full top-0 ${variant === "normal" ? "sticky bg-white z-50" : "fixed"}`}
+      className={`py-5 w-full top-0 ${
+        variant === "normal" ? "sticky bg-white z-50" : "fixed"
+      }`}
     >
       <CenterContent>
         <div className="flex items-center justify-between text-lg">
@@ -29,7 +31,10 @@ const NavBar: FC<Props> = ({ variant = "normal" }) => {
             <select name="language" id="language">
               <option value="eng">Eng</option>
             </select>
-            <Button className="px-12 text-base" onClick={() => navigate("/login")}>
+            <Button
+              className="px-12 text-base"
+              onClick={() => navigate("/login")}
+            >
               Login
             </Button>
           </nav>

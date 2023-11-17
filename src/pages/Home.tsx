@@ -9,7 +9,7 @@ const Home = () => {
     <>
       <NavBar />
       <Hero />
-      <section className="mt-48">
+      <section className="mt-24">
         <Explore />
       </section>
       <section className="mt-20">
