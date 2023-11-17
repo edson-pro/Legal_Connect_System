@@ -1,5 +1,6 @@
-import Button from "../ui/Button";
-import CenterContent from "../wrappers/CenterContent";
+import heroBg from "assets/images/hero-bg.webp";
+import Button from "components/ui/Button";
+import CenterContent from "components/wrappers/CenterContent";
 
 const Hero = () => {
   return (
@@ -24,7 +25,7 @@ const Hero = () => {
               </div>
             </div>
           </div>
-          <img src="/images/hero-bg.webp" alt="Hero background" />
+          <img src={heroBg} alt="Hero background" />
         </div>
       </CenterContent>
     </section>

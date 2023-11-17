@@ -1,8 +1,8 @@
-import CaseFollowUp from "../components/Homepage/CaseFollowUp";
-import Explore from "../components/Homepage/Explore";
-import Hero from "../components/Homepage/Hero";
-import Footer from "../components/ui/Footer";
-import NavBar from "../components/ui/NavBar";
+import CaseFollowUp from "components/Homepage/CaseFollowUp";
+import Explore from "components/Homepage/Explore";
+import Hero from "components/Homepage/Hero";
+import Footer from "components/ui/Footer";
+import NavBar from "components/ui/NavBar";
 
 const Home = () => {
   return (

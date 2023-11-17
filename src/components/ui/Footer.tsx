@@ -1,4 +1,4 @@
-import CenterContent from "../wrappers/CenterContent";
+import CenterContent from "components/wrappers/CenterContent";
 
 const Footer = () => {
   return (

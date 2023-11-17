@@ -1,15 +1,12 @@
-import Button from "../ui/Button";
-import CenterContent from "../wrappers/CenterContent";
+import exploreCardsBg from "assets/images/explore-cards-bg.png";
+import Button from "components/ui/Button";
+import CenterContent from "components/wrappers/CenterContent";
 
 const Explore = () => {
   return (
     <CenterContent>
       <div className="flex items-center justify-center bg-primary-blue py-[60px] gap-14 place-content-center rounded-2xl">
-        <img
-          src="/images/explore-cards-bg.png"
-          alt="Explore cards background"
-          className="max-w-lg"
-        />
+        <img src={exploreCardsBg} alt="Explore cards background" className="max-w-lg" />
         <div className="flex flex-col gap-5 text-white max-w-[418px]">
           <span className="px-4 py-2 rounded-full bg-secondary-yellow w-fit text-primary-blue">
             Explore

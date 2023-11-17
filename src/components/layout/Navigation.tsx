@@ -1,8 +1,8 @@
+import Footer from "components/ui/Footer";
+import NavBar from "components/ui/NavBar";
 import { FC } from "react";
 import { Outlet } from "react-router-dom";
 import { NavBarVariant } from "../../types";
-import Footer from "../ui/Footer";
-import NavBar from "../ui/NavBar";
 
 interface Props {
   navbarVariant?: NavBarVariant;

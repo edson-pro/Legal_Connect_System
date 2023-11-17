@@ -1,4 +1,6 @@
-import CenterContent from "../wrappers/CenterContent";
+import dashboardBg from "assets/images/dashboard-bg.png";
+import residenceRequestCard from "assets/images/residency-request-card.png";
+import CenterContent from "components/wrappers/CenterContent";
 
 const CaseFollowUp = () => {
   return (
@@ -14,11 +16,11 @@ const CaseFollowUp = () => {
         </div>
         <div className="max-w-4xl mx-auto mt-8 relative">
           <img
-            src="/images/residency-request-card.png"
+            src={residenceRequestCard}
             alt="residency request card"
             className="absolute w-[500px] right-0 bottom-0 -mr-24"
           />
-          <img src="/images/dashboard-bg.png" alt="dashboard background" className="w-4/5" />
+          <img src={dashboardBg} alt="dashboard background" className="w-4/5" />
         </div>
       </div>
     </CenterContent>

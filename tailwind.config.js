@@ -12,7 +12,10 @@ export default {
           blue: "#1D698D",
           gray: "#6B6B6B",
           black: "#343434",
-          "light-blue": "#F6FCFF",
+          "light-blue": {
+            default: "#F6FCFF",
+            200: "#E8F7FF",
+          },
         },
         secondary: {
           yellow: "#FAE5A9",
