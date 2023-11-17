@@ -28,7 +28,7 @@ const NavBar: FC<Props> = ({ variant = "normal" }) => {
             <a href="">FAQ</a>
           </nav>
           <nav className="flex items-center gap-9">
-            <select name="language" id="language">
+            <select name="language" className="bg-transparent" id="language">
               <option value="eng">Eng</option>
             </select>
             <Button
