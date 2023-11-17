@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 
 const ClientSignup = () => {
   const [formStep, setFormStep] = useState(1);
+  
   const handleContinue = (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     if (formStep === 3) return;

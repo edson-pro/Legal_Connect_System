@@ -23,7 +23,7 @@ const ClickInputField: FC<Props> = ({ label, type, iconUrl, active, ...restProps
       />
       <div className="flex items-center px-6 py-5  gap-7">
         <span className="inline-block p-3 bg-primary-blue rounded-xl">
-          <img src={iconUrl} alt="law icon" />
+          <img src={iconUrl} alt="input icon" />
         </span>
         <span className="text-lg">{label}</span>
       </div>
