@@ -5,6 +5,7 @@ import Home from "pages/Home.tsx";
 import Login from "pages/Login.tsx";
 import SignUp from "pages/SignUp.tsx";
 import ClientSignup from "pages/signup/ClientSignup";
+import LawyerSignup from "pages/signup/LawyerSignup";
 import { StrictMode } from "react";
 import ReactDOM from "react-dom/client";
 import {
@@ -25,6 +26,7 @@ const router = createBrowserRouter(
             <Route path="signup">
               <Route index element={<SignUp />} />
               <Route path="client" element={<ClientSignup />} />
+              <Route path="lawyer" element={<LawyerSignup />} />
             </Route>
           </Route>
         </Route>

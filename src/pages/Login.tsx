@@ -13,9 +13,9 @@ const Login = () => {
         <span className="mt-2 mb-4 text-primary-blue">Forgot password?</span>
         <Button>Login</Button>
       </form>
-      <span className="mt-6 self-center">
+      <span className="self-center mt-6">
         Don't have an account?
-        <Link className="text-primary-yellow ml-1" to="/signup">
+        <Link className="ml-1 text-primary-yellow" to="/signup">
           Sign up
         </Link>
       </span>

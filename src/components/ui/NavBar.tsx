@@ -2,7 +2,7 @@ import logo from "assets/icons/legal-connect-logo.svg";
 import Button from "components/ui/Button";
 import CenterContent from "components/wrappers/CenterContent";
 import { FC } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { NavBarVariant } from "types";
 
 interface Props {
@@ -18,7 +18,10 @@ const NavBar: FC<Props> = ({ variant = "normal" }) => {
       <CenterContent>
         <div className="flex items-center justify-between text-lg">
           <nav className="flex items-center gap-14">
-            <img src={logo} alt="Legal connect logo" className="w-36" />
+            <Link to="/">
+              <img src={logo} alt="Legal connect logo" className="w-36" />
+            </Link>
+
             <a href="">How it works</a>
             <a href="">FAQ</a>
           </nav>

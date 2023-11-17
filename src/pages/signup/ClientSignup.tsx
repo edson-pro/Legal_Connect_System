@@ -13,25 +13,25 @@ const ClientSignup = () => {
   };
 
   return (
-    <div className="flex flex-col justify-center ml-24 w-96 mt-24">
+    <div className="flex flex-col justify-center mt-24 ml-24 w-96">
       {formStep === 3 && (
         <span className="mb-5">
           <img
             src={lockpadIcon}
             alt="lockpad icon"
-            className="bg-primary-light-blue-200 p-4 rounded-xl"
+            className="p-4 bg-primary-light-blue-200 rounded-xl"
           />
         </span>
       )}
       <h1 className="text-3xl font-black text-primary-blue">
         {formStep === 3 ? "Verify Your Email Address" : "Create account"}
       </h1>
-      <span className="mt-4 max-w-xs">
+      <span className="max-w-xs mt-4">
         {formStep === 3
           ? "Secure Your Account and Access Exclusive Features"
           : "Fill in your information"}
       </span>
-      {formStep === 3 && <span className="text-primary-blue mt-1">Janusz Karpel@gmail.com</span>}
+      {formStep === 3 && <span className="mt-1 text-primary-blue">Janusz Karpel@gmail.com</span>}
       <form action="" className="flex flex-col mt-8 gap-4">
         {formStep === 1 && (
           <>
@@ -53,9 +53,9 @@ const ClientSignup = () => {
         </Button>
       </form>
 
-      <span className="mt-6 self-center">
+      <span className="self-center mt-6">
         Already have an account?
-        <Link className="text-primary-yellow ml-1" to="/login">
+        <Link className="ml-1 text-primary-yellow" to="/login">
           Login
         </Link>
       </span>
