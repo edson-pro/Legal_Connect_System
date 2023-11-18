@@ -1,8 +1,9 @@
 import AuthStepperFormBreadCrumps from "components/authPages/AuthStepperFormBreadCrumbs";
 import Button from "components/ui/Button";
-import InputField from "components/ui/InputField";
-import RadioButton from "components/ui/shared/TagRadioButton";
-import { MouseEvent, useState } from "react";
+import FileInputField from "components/ui/inputs/FileInputField";
+import InputField from "components/ui/inputs/InputField";
+import TagRadioButton from "components/ui/inputs/TagRadioButton";
+import { ChangeEvent, MouseEvent, useState } from "react";
 import { Link } from "react-router-dom";
 
 const formTitles = [
@@ -12,21 +13,50 @@ const formTitles = [
   "Attach documents",
 ];
 
+const practiceAreas = [
+  "Labour law",
+  "Criminal law",
+  "Property law",
+  "Family law",
+  "Commercial law",
+  "Administrative law",
+  "Corporate law",
+  "Intellectual property",
+  "Real Estate",
+  "Immigration law",
+  "Tax law",
+  "Health law",
+  "Environmental law",
+  "Admiralty law",
+  "Construction law",
+  "Bankruptcy",
+  "Insurance law",
+  "Dispute resolution",
+];
+
 const LawyerSignup = () => {
   const [formStep, setFormStep] = useState(1);
+  const [selectedPracticeArea, setSelectedPracticeArea] = useState<string>();
 
   const handleContinue = (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     setFormStep((prev) => prev + 1);
   };
 
+  const handleSelectedPracticeAreaChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const { value } = e.target;
+    setSelectedPracticeArea(value);
+  };
+
   const formTitle = formTitles[formStep - 1];
 
   return (
-    <div className="flex flex-col mt-32 ml-24 w-[364px]">
+    <div
+      className={`flex flex-col mt-32 ml-24 ${formStep === 3 ? "max-w-[494px]" : "max-w-[384px]"}`}
+    >
       <AuthStepperFormBreadCrumps />
-      <form className="flex flex-col justify-self-center my-auto gap-4">
-        <h1 className="text-2xl font-black text-primary-blue mb-3">{formTitle}</h1>
+      <div className="flex flex-col my-auto justify-self-center gap-4">
+        <h1 className="mb-3 text-2xl font-black text-primary-blue">{formTitle}</h1>
         {formStep === 1 && (
           <>
             <InputField label="First name" placeholder="Enter your first name" />
@@ -46,20 +76,39 @@ const LawyerSignup = () => {
 
         {formStep === 3 && (
           <>
-            <RadioButton />
+            <div className="flex flex-wrap gap-4">
+              {practiceAreas.map((area, index) => (
+                <TagRadioButton
+                  label={area}
+                  value={area}
+                  key={index}
+                  checked={selectedPracticeArea === area}
+                  name="practiceArea"
+                  onChange={handleSelectedPracticeAreaChange}
+                />
+              ))}
+            </div>
+          </>
+        )}
+
+        {formStep === 4 && (
+          <>
+            <FileInputField label="Work permit" id="work-permit" />
+            <FileInputField label="Appendix" id="Appendix" />
+            <FileInputField label="ZUS+MONTHLY ZUS Report" id="zus-monthly-zus-report" />
           </>
         )}
 
         <Button onClick={handleContinue} className="mt-4">
           Continue
         </Button>
-        <span className="self-center mt-6">
+        <span className="self-center mt-2">
           Already have an account?
           <Link className="ml-1 text-primary-yellow" to="/login">
             Login
           </Link>
         </span>
-      </form>
+      </div>
     </div>
   );
 };

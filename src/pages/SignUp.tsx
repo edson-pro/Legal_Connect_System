@@ -1,7 +1,7 @@
 import clientIcon from "assets/icons/client.svg";
 import justiceIcon from "assets/icons/justice.svg";
 import Button from "components/ui/Button";
-import ClickInputField from "components/ui/ClickInputField";
+import ClickInputField from "components/ui/inputs/ClickInputField";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 

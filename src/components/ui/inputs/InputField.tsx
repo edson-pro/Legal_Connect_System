@@ -1,12 +1,12 @@
 import { InputHTMLAttributes, forwardRef } from "react";
 
-interface InputFieldProps extends InputHTMLAttributes<HTMLInputElement> {
+interface Props extends InputHTMLAttributes<HTMLInputElement> {
   label?: string;
   error?: boolean;
   errorMessage?: string;
 }
 
-const InputField = forwardRef<HTMLInputElement, InputFieldProps>(
+const InputField = forwardRef<HTMLInputElement, Props>(
   ({ label, className, required, error, errorMessage, ...props }, ref) => {
     return (
       <div className="w-full">

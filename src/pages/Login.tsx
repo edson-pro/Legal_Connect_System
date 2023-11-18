@@ -1,5 +1,5 @@
 import Button from "components/ui/Button";
-import InputField from "components/ui/InputField";
+import InputField from "components/ui/inputs/InputField";
 import { Link } from "react-router-dom";
 
 const Login = () => {
