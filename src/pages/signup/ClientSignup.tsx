@@ -13,6 +13,12 @@ const ClientSignup = () => {
     setFormStep((prev) => prev + 1);
   };
 
+  const formTitle = formStep === 3 ? "Verify Your Email Address" : "Create account";
+  const formSubTitle =
+    formStep === 3
+      ? "Secure Your Account and Access Exclusive Features"
+      : "Fill in your information";
+
   return (
     <div className="flex flex-col justify-center mt-24 ml-24 w-96">
       {formStep === 3 && (
@@ -20,18 +26,12 @@ const ClientSignup = () => {
           <img
             src={lockpadIcon}
             alt="lockpad icon"
-            className="p-4 bg-primary-light-blue-200 rounded-xl"
+            className="p-3 bg-primary-light-blue-200 rounded-xl"
           />
         </span>
       )}
-      <h1 className="text-3xl font-black text-primary-blue">
-        {formStep === 3 ? "Verify Your Email Address" : "Create account"}
-      </h1>
-      <span className="max-w-xs mt-4">
-        {formStep === 3
-          ? "Secure Your Account and Access Exclusive Features"
-          : "Fill in your information"}
-      </span>
+      <h1 className="text-3xl font-black text-primary-blue">{formTitle}</h1>
+      <span className="max-w-xs mt-4">{formSubTitle}</span>
       {formStep === 3 && <span className="mt-1 text-primary-blue">Janusz Karpel@gmail.com</span>}
       <form action="" className="flex flex-col mt-8 gap-4">
         {formStep === 1 && (

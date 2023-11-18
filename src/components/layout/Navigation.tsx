@@ -11,11 +11,13 @@ interface Props {
 
 const Navigation: FC<Props> = ({ navbarVariant, hideFooter }) => {
   return (
-    <>
+    <div className="flex flex-col h-full min-h-screen">
       <NavBar variant={navbarVariant} />
-      <Outlet />
+      <div className="flex flex-col flex-1 h-full">
+        <Outlet />
+      </div>
       {!hideFooter && <Footer />}
-    </>
+    </div>
   );
 };
 export default Navigation;

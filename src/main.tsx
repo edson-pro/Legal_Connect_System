@@ -1,6 +1,7 @@
 import AuthColumns from "components/layout/AuthColumns.tsx";
 import Navigation from "components/layout/Navigation.tsx";
 import "index.css";
+import ConfirmationWaiting from "pages/AccountConfirmationStatus";
 import Home from "pages/Home.tsx";
 import Login from "pages/Login.tsx";
 import SignUp from "pages/SignUp.tsx";
@@ -29,6 +30,9 @@ const router = createBrowserRouter(
               <Route path="lawyer" element={<LawyerSignup />} />
             </Route>
           </Route>
+        </Route>
+        <Route element={<Navigation hideFooter={true} />}>
+          <Route path="account-confirmation-status" element={<ConfirmationWaiting />} />
         </Route>
       </Route>
     </>

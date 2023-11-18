@@ -1,5 +1,5 @@
-import clientIcon from "assets/icons/client.svg";
-import justiceIcon from "assets/icons/justice.svg";
+import ClientIcon from "assets/icons/ClientIcon";
+import JusticeIcon from "assets/icons/JusticeIcon";
 import Button from "components/ui/Button";
 import ClickInputField from "components/ui/inputs/ClickInputField";
 import { useState } from "react";
@@ -20,15 +20,15 @@ const SignUp = () => {
       <form action="" className="flex flex-col mt-8 gap-5">
         <ClickInputField
           label="Client"
-          iconUrl={clientIcon}
           active={selectedRole === "client"}
           onClick={() => setSelectedRole("client")}
+          Icon={ClientIcon}
         />
         <ClickInputField
           label="Lawyer"
-          iconUrl={justiceIcon}
           active={selectedRole === "lawyer"}
           onClick={() => setSelectedRole("lawyer")}
+          Icon={JusticeIcon}
         />
         <Button className="mt-8" onClick={handleNavigation}>
           Continue

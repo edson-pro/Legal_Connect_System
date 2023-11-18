@@ -4,11 +4,11 @@ interface Props extends InputHTMLAttributes<HTMLInputElement> {
   label?: string;
   error?: boolean;
   errorMessage?: string;
-  iconUrl: string;
   active?: boolean;
+  Icon: FC;
 }
 
-const ClickInputField: FC<Props> = ({ label, type, iconUrl, active, ...restProps }) => {
+const ClickInputField: FC<Props> = ({ label, type, Icon, active, ...restProps }) => {
   return (
     <div
       className={`relative overflow-hidden border-2 bg-primary-light-blue rounded-xl hover:bg-primary-blue/10 ${
@@ -23,7 +23,7 @@ const ClickInputField: FC<Props> = ({ label, type, iconUrl, active, ...restProps
       />
       <div className="flex items-center px-6 py-5  gap-7">
         <span className="inline-block p-3 bg-primary-blue rounded-xl">
-          <img src={iconUrl} alt="input icon" />
+          <Icon />
         </span>
         <span className="text-lg">{label}</span>
       </div>

@@ -1,16 +1,18 @@
+import lockpadIcon from "assets/icons/lockpad.svg";
 import AuthStepperFormBreadCrumps from "components/authPages/AuthStepperFormBreadCrumbs";
 import Button from "components/ui/Button";
 import FileInputField from "components/ui/inputs/FileInputField";
 import InputField from "components/ui/inputs/InputField";
 import TagRadioButton from "components/ui/inputs/TagRadioButton";
 import { ChangeEvent, MouseEvent, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const formTitles = [
   "Personal information",
   "Proffessional information",
   "Practise areas",
   "Attach documents",
+  "Verify Your Email Address",
 ];
 
 const practiceAreas = [
@@ -37,9 +39,11 @@ const practiceAreas = [
 const LawyerSignup = () => {
   const [formStep, setFormStep] = useState(1);
   const [selectedPracticeArea, setSelectedPracticeArea] = useState<string>();
+  const navigate = useNavigate();
 
   const handleContinue = (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
+    if (formStep === 5) return navigate("/account-confirmation-status");
     setFormStep((prev) => prev + 1);
   };
 
@@ -56,7 +60,23 @@ const LawyerSignup = () => {
     >
       <AuthStepperFormBreadCrumps />
       <div className="flex flex-col my-auto justify-self-center gap-4">
+        {formStep === 5 && (
+          <span className="mb-5">
+            <img
+              src={lockpadIcon}
+              alt="lockpad icon"
+              className="p-3 bg-primary-light-blue-200 rounded-xl"
+            />
+          </span>
+        )}
+
         <h1 className="mb-3 text-2xl font-black text-primary-blue">{formTitle}</h1>
+        {formStep === 5 && (
+          <div className="flex flex-col -mt-8">
+            <span className="max-w-xs mt-4">Secure Your Account and Access Exclusive Features</span>
+            <span className="mt-1 text-primary-blue">Janusz Karpel@gmail.com</span>
+          </div>
+        )}
         {formStep === 1 && (
           <>
             <InputField label="First name" placeholder="Enter your first name" />

@@ -34,7 +34,7 @@ const FileInputField: FC<Props> = ({ label, id, ...restProps }) => {
             </>
           ) : (
             <>
-              <label htmlFor={id} className="underline text-primary-blue cursor-pointer">
+              <label htmlFor={id} className="underline cursor-pointer text-primary-blue">
                 Click to upload
               </label>
               <span className="text-[#717171] ml-3">Or Drag and Drop</span>
@@ -47,7 +47,7 @@ const FileInputField: FC<Props> = ({ label, id, ...restProps }) => {
         <input type="file" id={id} className="hidden" onChange={handleFileChange} {...restProps} />
         {file && (
           <button
-            className="p-2 w-fit flex justify-center items-center rounded-full bg-red-100/40 text-red-400 ml-auto"
+            className="flex items-center justify-center p-2 ml-auto text-red-400 rounded-full w-fit bg-red-100/40"
             onClick={deleteFile}
           >
             <DeleteIcon />

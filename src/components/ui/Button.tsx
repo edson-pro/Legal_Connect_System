@@ -7,7 +7,7 @@ interface Props extends HTMLAttributes<HTMLButtonElement>, PropsWithChildren {
 const Button: FC<Props> = ({ children, fullWidth, className, ...props }) => {
   return (
     <button
-      className={`bg-primary-yellow py-3 rounded-md text-primary-blue ${
+      className={`bg-primary-yellow py-[10px] rounded-md text-primary-blue ${
         fullWidth ? "w-full" : ""
       } ${className}`}
       {...props}
