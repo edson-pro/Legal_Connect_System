@@ -1,4 +1,4 @@
-import MatchedLawyerProfiles from "components/client-portal-onboarding-forms/MatchedLawyerProfiles";
+import MatchedLawyerProfiles from "components/client-portal/onboarding-forms/MatchedLawyerProfiles";
 import AuthColumns from "components/layout/AuthColumns.tsx";
 import Navigation from "components/layout/Navigation.tsx";
 import ClientPortalNavigation from "components/layout/clientPortal/ClientPortalNavigation";
@@ -9,7 +9,7 @@ import ClientPortalOnboarding from "pages/ClientPortalOnboarding";
 import Home from "pages/Home.tsx";
 import Login from "pages/Login.tsx";
 import SignUp from "pages/SignUp.tsx";
-import ClientPortalHome from "pages/dashboard/client/ClientPortalHome";
+import ClientPortalHome from "pages/client-portal/ClientPortalHome";
 import ClientSignup from "pages/signup/ClientSignup";
 import LawyerSignup from "pages/signup/LawyerSignup";
 import { StrictMode } from "react";

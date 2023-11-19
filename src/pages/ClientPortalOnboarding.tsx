@@ -1,15 +1,18 @@
-import CaseDescription from "components/client-portal-onboarding-forms/CaseDescription";
-import CaseDetails from "components/client-portal-onboarding-forms/CaseDetails";
-import LaywerLocation from "components/client-portal-onboarding-forms/LaywerLocation";
-import LaywerSkills from "components/client-portal-onboarding-forms/LaywerSkills";
+import CaseDescription from "components/client-portal/onboarding-forms/CaseDescription";
+import CaseDetails from "components/client-portal/onboarding-forms/CaseDetails";
+import LaywerLocation from "components/client-portal/onboarding-forms/LaywerLocation";
+import LaywerSkills from "components/client-portal/onboarding-forms/LaywerSkills";
 import Button from "components/ui/Button";
 import { MouseEvent, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const ClientPortalOnboarding = () => {
   const [onboardingStep, setOnboardingStep] = useState(1);
+  const navigate = useNavigate();
 
   const handleContinue = (event: MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
+    if (onboardingStep === 4) navigate("matched-lawyers");
     setOnboardingStep((prev) => prev + 1);
   };
 

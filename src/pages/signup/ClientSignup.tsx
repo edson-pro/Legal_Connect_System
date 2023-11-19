@@ -2,14 +2,15 @@ import lockpadIcon from "assets/icons/lockpad.svg";
 import Button from "components/ui/Button";
 import InputField from "components/ui/inputs/InputField";
 import { MouseEvent, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const ClientSignup = () => {
   const [formStep, setFormStep] = useState(1);
+  const navigate = useNavigate();
 
   const handleContinue = (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    if (formStep === 3) return;
+    if (formStep === 3) navigate("/client-portal/onboarding");
     setFormStep((prev) => prev + 1);
   };
 
