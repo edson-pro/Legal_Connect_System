@@ -3,9 +3,11 @@ import { Outlet } from "react-router-dom";
 
 const ClientPortalNavigation = () => {
   return (
-    <div>
+    <div className="flex flex-col h-full min-h-screen">
       <ClientPortalNavBar />
-      <Outlet />
+      <div className="flex flex-col flex-1 h-full">
+        <Outlet />
+      </div>
     </div>
   );
 };

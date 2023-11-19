@@ -1,13 +1,13 @@
-import { FC, HTMLAttributes, PropsWithChildren } from "react";
+import { ButtonHTMLAttributes, FC, PropsWithChildren } from "react";
 
-interface Props extends HTMLAttributes<HTMLButtonElement>, PropsWithChildren {
+interface Props extends ButtonHTMLAttributes<HTMLButtonElement>, PropsWithChildren {
   fullWidth?: boolean;
 }
 
 const Button: FC<Props> = ({ children, fullWidth, className, ...props }) => {
   return (
     <button
-      className={`bg-primary-yellow py-[10px] rounded-md text-primary-blue ${
+      className={`bg-primary-yellow py-[10px] rounded-md text-primary-blue transition-transform duration-200 hover:bg-yellow-500 ease-out active:scale-[1.02] ${
         fullWidth ? "w-full" : ""
       } ${className}`}
       {...props}

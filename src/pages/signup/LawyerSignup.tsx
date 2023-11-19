@@ -4,6 +4,7 @@ import Button from "components/ui/Button";
 import FileInputField from "components/ui/inputs/FileInputField";
 import InputField from "components/ui/inputs/InputField";
 import TagRadioButton from "components/ui/inputs/TagRadioButton";
+import { lawyersPracticeAreas } from "data/laywers";
 import { ChangeEvent, MouseEvent, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
@@ -13,27 +14,6 @@ const formTitles = [
   "Practise areas",
   "Attach documents",
   "Verify Your Email Address",
-];
-
-const practiceAreas = [
-  "Labour law",
-  "Criminal law",
-  "Property law",
-  "Family law",
-  "Commercial law",
-  "Administrative law",
-  "Corporate law",
-  "Intellectual property",
-  "Real Estate",
-  "Immigration law",
-  "Tax law",
-  "Health law",
-  "Environmental law",
-  "Admiralty law",
-  "Construction law",
-  "Bankruptcy",
-  "Insurance law",
-  "Dispute resolution",
 ];
 
 const LawyerSignup = () => {
@@ -59,7 +39,7 @@ const LawyerSignup = () => {
       className={`flex flex-col mt-32 ml-24 ${formStep === 3 ? "max-w-[494px]" : "max-w-[384px]"}`}
     >
       <AuthStepperFormBreadCrumps />
-      <div className="flex flex-col my-auto justify-self-center gap-4">
+      <form className="flex flex-col my-auto justify-self-center gap-4">
         {formStep === 5 && (
           <span className="mb-5">
             <img
@@ -95,20 +75,18 @@ const LawyerSignup = () => {
         )}
 
         {formStep === 3 && (
-          <>
-            <div className="flex flex-wrap gap-4">
-              {practiceAreas.map((area, index) => (
-                <TagRadioButton
-                  label={area}
-                  value={area}
-                  key={index}
-                  checked={selectedPracticeArea === area}
-                  name="practiceArea"
-                  onChange={handleSelectedPracticeAreaChange}
-                />
-              ))}
-            </div>
-          </>
+          <div className="flex flex-wrap gap-4">
+            {lawyersPracticeAreas.map((area, index) => (
+              <TagRadioButton
+                label={area}
+                value={area}
+                key={index}
+                checked={selectedPracticeArea === area}
+                name="practiceArea"
+                onChange={handleSelectedPracticeAreaChange}
+              />
+            ))}
+          </div>
         )}
 
         {formStep === 4 && (
@@ -128,7 +106,7 @@ const LawyerSignup = () => {
             Login
           </Link>
         </span>
-      </div>
+      </form>
     </div>
   );
 };

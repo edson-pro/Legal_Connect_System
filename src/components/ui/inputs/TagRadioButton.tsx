@@ -12,7 +12,7 @@ const TagRadioButton: FC<Props> = ({ label, value, checked, ...restProps }) => {
     <div className="relative">
       <div
         className={`flex w-fit items-center justify-center gap-1 p-3 rounded-xl relative ${
-          checked ? "bg-primary-blue text-white" : "bg-gray-200"
+          checked ? "bg-primary-blue text-white" : "bg-[#F1F1F1]"
         }`}
       >
         <input

@@ -1,8 +1,11 @@
+import MatchedLawyerProfiles from "components/client-portal-onboarding-forms/MatchedLawyerProfiles";
 import AuthColumns from "components/layout/AuthColumns.tsx";
 import Navigation from "components/layout/Navigation.tsx";
-import ClientPortalNavigation from "components/layout/dashboard/client/ClientPortalNavigation";
+import ClientPortalNavigation from "components/layout/clientPortal/ClientPortalNavigation";
+import OnboardingSplitColumns from "components/layout/clientPortal/OnboardingSplitColumns";
 import "index.css";
 import ConfirmationWaiting from "pages/AccountConfirmationStatus";
+import ClientPortalOnboarding from "pages/ClientPortalOnboarding";
 import Home from "pages/Home.tsx";
 import Login from "pages/Login.tsx";
 import SignUp from "pages/SignUp.tsx";
@@ -36,8 +39,18 @@ const router = createBrowserRouter(
         <Route element={<Navigation hideFooter={true} />}>
           <Route path="account-confirmation-status" element={<ConfirmationWaiting />} />
         </Route>
-        <Route path="/client-portal" element={<ClientPortalNavigation />}>
-          <Route index element={<ClientPortalHome />} />
+        <Route path="client-portal">
+          <Route element={<ClientPortalNavigation />}>
+            <Route index element={<ClientPortalHome />} />
+          </Route>
+          <Route path="onboarding">
+            <Route element={<OnboardingSplitColumns />}>
+              <Route index element={<ClientPortalOnboarding />} />
+            </Route>
+            <Route element={<ClientPortalNavigation />}>
+              <Route path="matched-lawyers" element={<MatchedLawyerProfiles />} />
+            </Route>
+          </Route>
         </Route>
       </Route>
     </>
