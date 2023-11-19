@@ -49,8 +49,14 @@ const ClientPortalHome = () => {
           </p>
         </div>
         <div className="mt-5 ml-auto flex justify-end gap-4">
-          <button className="text-primary-blue">Reject</button>
-          <Button className="px-10 inline-flex items-center rounded-2xl gap-2" autoFocus>
+          <button className="text-primary-blue" onClick={closeModal}>
+            Reject
+          </button>
+          <Button
+            className="px-10 inline-flex items-center rounded-2xl gap-2"
+            autoFocus
+            onClick={closeModal}
+          >
             <TickIcon className="w-5" />
             Accept
           </Button>

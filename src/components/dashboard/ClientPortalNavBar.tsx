@@ -21,7 +21,7 @@ const ClientPortalNavBar = () => {
               <img src={logo} alt="Legal connect logo" className="w-36" />
             </Link>
             {navlinks.map((navLink, index) => (
-              <NavLink key={index} to={`/client-portal/${navLink.link}`}>
+              <NavLink className="text-base" key={index} to={`/client-portal/${navLink.link}`}>
                 {navLink.label}
               </NavLink>
             ))}

@@ -11,7 +11,7 @@ interface Props extends InputHTMLAttributes<HTMLInputElement> {
 const ClickInputField: FC<Props> = ({ label, type, Icon, active, ...restProps }) => {
   return (
     <div
-      className={`relative overflow-hidden border-2 bg-primary-light-blue rounded-xl hover:bg-primary-blue/10 ${
+      className={`relative overflow-hidden border-2 bg-primary-light-blue rounded-xl hover:bg-primary-light-blue-200/60 ${
         active ? "border-primary-yellow" : "border-gray-100"
       }`}
     >

@@ -1,10 +1,13 @@
 import LocationIcon from "assets/icons/LocationIcon";
 import MessageIcon from "assets/icons/MessageIcon";
 import Button from "components/ui/Button";
+import { useNavigate } from "react-router-dom";
 
 const lawyerPracticeArea = ["Family law", "Tax law", "Health law"];
 
 const LaywerCard = () => {
+  const navigate = useNavigate();
+  const goToLawyerProfile = (lawyerId: string) => navigate(`lawyers/${lawyerId}`);
   return (
     <div className="flex flex-col max-w-sm px-4 pt-5 pb-4 border border-gray-200/70 rounded-2xl gap-y-4">
       <div className="flex justify-between">
@@ -31,7 +34,12 @@ const LaywerCard = () => {
               Connect
             </span>
           </Button>
-          <button className="inline mx-auto mt-1 text-sm text-primary-blue">View profile</button>
+          <button
+            className="inline mx-auto mt-1 text-sm text-primary-blue"
+            onClick={() => goToLawyerProfile("124")}
+          >
+            View profile
+          </button>
         </div>
       </div>
       <div className="flex gap-4">

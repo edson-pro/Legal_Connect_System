@@ -10,6 +10,7 @@ import Home from "pages/Home.tsx";
 import Login from "pages/Login.tsx";
 import SignUp from "pages/SignUp.tsx";
 import ClientPortalHome from "pages/client-portal/ClientPortalHome";
+import LawyerProfile from "pages/client-portal/LawyerProfile";
 import ClientSignup from "pages/signup/ClientSignup";
 import LawyerSignup from "pages/signup/LawyerSignup";
 import { StrictMode } from "react";
@@ -42,6 +43,9 @@ const router = createBrowserRouter(
         <Route path="client-portal">
           <Route element={<ClientPortalNavigation />}>
             <Route index element={<ClientPortalHome />} />
+            <Route path="lawyers">
+              <Route path=":id" element={<LawyerProfile />} />
+            </Route>
           </Route>
           <Route path="onboarding">
             <Route element={<OnboardingSplitColumns />}>
