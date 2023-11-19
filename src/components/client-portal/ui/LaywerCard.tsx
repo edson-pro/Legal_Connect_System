@@ -6,7 +6,7 @@ const lawyerPracticeArea = ["Family law", "Tax law", "Health law"];
 
 const LaywerCard = () => {
   return (
-    <div className="max-w-sm px-4 pt-5 pb-4 border border-gray-200/70 rounded-2xl flex flex-col gap-y-4">
+    <div className="flex flex-col max-w-sm px-4 pt-5 pb-4 border border-gray-200/70 rounded-2xl gap-y-4">
       <div className="flex justify-between">
         <div className="flex items-center gap-2">
           <span className="inline-block w-12 h-12">
@@ -37,7 +37,7 @@ const LaywerCard = () => {
       <div className="flex gap-4">
         {lawyerPracticeArea.map((area, index) => (
           <span
-            className="px-3 py-1 rounded-md text-sm font-light bg-primary-light-blue text-primary-blue border border-primary-blue/10"
+            className="px-3 py-1 text-sm font-light border rounded-md bg-primary-light-blue text-primary-blue border-primary-blue/10"
             key={index}
           >
             {area}
