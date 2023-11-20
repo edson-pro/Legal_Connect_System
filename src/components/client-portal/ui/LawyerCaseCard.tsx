@@ -2,11 +2,11 @@ import LocationIcon from "assets/icons/LocationIcon";
 
 const LawyerCaseCard = () => {
   return (
-    <div className="relative grid grid-cols-2 pt-4 pb-5 border border-gray-200/70 rounded-md">
-      <span className="absolute h-full w-px bg-gray-200/70 self-center justify-self-center"></span>
+    <div className="relative pt-4 pb-5 border grid grid-cols-2 border-gray-200/70 rounded-md">
+      <span className="absolute self-center w-px h-full bg-gray-200/70 justify-self-center"></span>
       <div className="px-4">
         <span className="text-primary-blue">Lawyer</span>
-        <div className="flex items-center gap-2 mt-2">
+        <div className="flex items-center mt-2 gap-2">
           <span className="inline-block w-12 h-12">
             <img
               src="https://picsum.photos/200"

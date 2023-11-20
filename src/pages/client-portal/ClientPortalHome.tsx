@@ -48,12 +48,12 @@ const ClientPortalHome = () => {
             social.
           </p>
         </div>
-        <div className="mt-5 ml-auto flex justify-end gap-4">
+        <div className="flex justify-end mt-5 ml-auto gap-4">
           <button className="text-primary-blue" onClick={closeModal}>
             Reject
           </button>
           <Button
-            className="px-10 inline-flex items-center rounded-2xl gap-2"
+            className="inline-flex items-center px-10 rounded-2xl gap-2"
             autoFocus
             onClick={closeModal}
           >

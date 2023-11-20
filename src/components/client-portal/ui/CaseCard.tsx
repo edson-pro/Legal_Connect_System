@@ -2,9 +2,9 @@ import DateIcon from "assets/icons/DateIcon";
 
 const CaseCard = () => {
   return (
-    <div className="py-4 px-6 border border-gray-200/60 rounded-xl w-96 max-w-xs text-sm">
-      <span className="text-primary-blue block font-normal">Ongoing</span>
-      <span className="text-sm flex gap-2 mt-2">
+    <div className="max-w-xs px-6 py-4 text-sm border border-gray-200/60 rounded-xl w-96">
+      <span className="block font-normal text-primary-blue">Ongoing</span>
+      <span className="flex mt-2 text-sm gap-2">
         <DateIcon />
         12 Jan 2023
       </span>

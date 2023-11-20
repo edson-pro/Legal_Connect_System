@@ -1,6 +1,15 @@
-const DocumentIcon = () => {
+import { SVGProps } from "react";
+
+const DocumentIcon = (props: SVGProps<SVGSVGElement>) => {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 18 18">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="18"
+      height="18"
+      fill="none"
+      viewBox="0 0 18 18"
+      {...props}
+    >
       <path stroke="currentColor" strokeLinejoin="round" d="M11.787 12.168H6.372"></path>
       <path
         stroke="currentColor"

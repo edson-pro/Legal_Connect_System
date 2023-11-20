@@ -28,9 +28,9 @@ const LawyerProfile = () => {
               <span className="flex items-center gap-1 text-[#8F8F8F]">Lawyer</span>
             </div>
           </div>
-          <div className="mt-5 ml-auto flex items-center justify-end gap-10">
+          <div className="flex items-center justify-end mt-5 ml-auto gap-10">
             <button className="text-primary-blue">Book Appointment</button>
-            <Button className="px-10 inline-flex items-center rounded-2xl gap-2 h-12">
+            <Button className="inline-flex items-center h-12 px-10 rounded-2xl gap-2">
               <MessageIcon className="w-5" />
               Message
             </Button>
@@ -40,7 +40,7 @@ const LawyerProfile = () => {
         <div className="flex justify-between mt-8">
           <div className="max-w-2xl">
             <span className="text-lg font-normal text-[#626060]">Practice areas</span>
-            <div className="flex flex-wrap gap-x-6 gap-y-4 mt-4">
+            <div className="flex flex-wrap mt-4 gap-x-6 gap-y-4">
               {lawyersPracticeAreas.slice(9).map((area, index) => (
                 <span
                   key={index}
@@ -53,7 +53,7 @@ const LawyerProfile = () => {
           </div>
           <div>
             <span className="text-lg font-normal text-[#626060]">Availability</span>
-            <div className="grid grid-cols-2 gap-12 mt-2">
+            <div className="mt-2 grid grid-cols-2 gap-12">
               <div>
                 <span className="block text-black">Monday - Friday</span>
                 <span className="text-[#736B6B] mt-2">7:00 AM - 5:00 PM</span>
@@ -68,7 +68,7 @@ const LawyerProfile = () => {
 
         <div className="mt-12">
           <Tab.Group>
-            <Tab.List className="flex space-x-1 rounded-xl p-1 gap-5 max-w-lg">
+            <Tab.List className="flex max-w-lg p-1 space-x-1 rounded-xl gap-5">
               {["Reviews", "Cases", "About"].map((category) => (
                 <Tab
                   key={category}
@@ -92,7 +92,7 @@ const LawyerProfile = () => {
                   <ReviewCard key={number} />
                 ))}
               </Tab.Panel>
-              <Tab.Panel className="flex gap-4 w-full">
+              <Tab.Panel className="flex w-full gap-4">
                 {[0, 1, 2].map((number) => (
                   <CaseCard key={number} />
                 ))}
