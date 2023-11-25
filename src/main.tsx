@@ -12,6 +12,7 @@ import Login from "pages/Login.tsx";
 import SignUp from "pages/SignUp.tsx";
 import ClientPortalHome from "pages/client-portal/ClientPortalHome";
 import LawyerProfile from "pages/client-portal/LawyerProfile";
+import CasesPage from "pages/lawyer-dashboard/CasesPage";
 import LawyerDashboardHome from "pages/lawyer-dashboard/LawyerDashboardHome";
 import ClientSignup from "pages/signup/ClientSignup";
 import LawyerSignup from "pages/signup/LawyerSignup";
@@ -60,7 +61,7 @@ const router = createBrowserRouter(
         </Route>
         <Route path="lawyer-dashboard" element={<LawyerDashboardNavigation />}>
           <Route index element={<LawyerDashboardHome />} />
-          <Route path="cases" element={<LawyerDashboardHome />} />
+          <Route path="cases" element={<CasesPage />} />
           <Route path="connects" element={<LawyerDashboardHome />} />
           <Route path="finance" element={<LawyerDashboardHome />} />
           <Route path="profile" element={<LawyerDashboardHome />} />
