@@ -1,4 +1,4 @@
-import ClientPortalNavBar from "components/dashboard/ClientPortalNavBar";
+import ClientPortalNavBar from "components/lawyer-dashboard/ClientPortalNavBar";
 import { Outlet } from "react-router-dom";
 
 const ClientPortalNavigation = () => {

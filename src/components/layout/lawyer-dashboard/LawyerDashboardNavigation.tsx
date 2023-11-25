@@ -1,9 +1,15 @@
+import CircleAddIcon from "assets/icons/CircleAddIcon";
 import ConnectionIcon from "assets/icons/ConnectionIcon";
 import DocumentIcon from "assets/icons/DocumentIcon";
 import FinanceIcon from "assets/icons/FinanceIcon";
 import HomeIcon from "assets/icons/HomeIcon";
+import MessageIcon from "assets/icons/MessageIcon";
+import NotificationIcon from "assets/icons/NotificationIcon";
+import SearchIcon from "assets/icons/SearchIcon";
 import UserIcon from "assets/icons/UserIcon";
 import legalConnectBlueLogo from "assets/images/legal-connect-blue-logo.png";
+import Button from "components/ui/Button";
+import InputField from "components/ui/inputs/InputField";
 import { NavLink, Outlet } from "react-router-dom";
 
 const LawyerDashboardNavigation = () => {
@@ -36,8 +42,8 @@ const LawyerDashboardNavigation = () => {
   ];
 
   return (
-    <div>
-      <aside className="fixed flex flex-col w-64 h-full px-6 bg-primary-blue justify-top  py-9">
+    <div className="flex w-full h-screen">
+      <aside className="flex flex-col h-full px-6 w-72 bg-primary-blue justify-top py-8">
         <img src={legalConnectBlueLogo} alt="Legal connect logo" className="mx-auto w-28" />
         <div className="flex flex-col mt-12 gap-4">
           {navLinks.map((navLink, index) => (
@@ -65,7 +71,32 @@ const LawyerDashboardNavigation = () => {
           </span>
         </div>
       </aside>
-      <Outlet />
+      <div className="w-full">
+        <header className="flex items-center justify-between w-full px-10 py-3 shadow">
+          <span className="text-xl text">Hi, Mateusz M</span>
+          <span className="w-96">
+            <InputField Icon={SearchIcon} placeholder="Search something" className="h-12 py-2" />
+          </span>
+          <nav className="flex items-center gap-14">
+            <Button className="flex px-3 rounded-2xl gap-3">
+              <CircleAddIcon />
+              Add case
+            </Button>
+            <NotificationIcon />
+            <MessageIcon />
+            <span className="w-14 h-14">
+              <img
+                src="https://picsum.photos/200"
+                alt="random image"
+                className="w-full rounded-full"
+              />
+            </span>
+          </nav>
+        </header>
+        <div className="ml-6">
+          <Outlet />
+        </div>
+      </div>
     </div>
   );
 };
