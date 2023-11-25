@@ -9,7 +9,7 @@ const Button: FC<Props> = ({ children, fullWidth, className, ...props }) => {
   return (
     <button
       className={twMerge(
-        `bg-primary-yellow py-[10px] rounded-md text-primary-blue transition-transform duration-200 hover:bg-yellow-500 ease-out active:scale-[1.02] ${
+        `bg-primary-yellow h-fit py-[10px] rounded-md text-primary-blue transition-transform duration-200 hover:bg-yellow-500 ease-out active:scale-[1.02] ${
           fullWidth ? "w-full" : ""
         } ${className}`
       )}

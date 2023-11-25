@@ -42,8 +42,8 @@ const LawyerDashboardNavigation = () => {
   ];
 
   return (
-    <div className="flex w-full h-screen">
-      <aside className="flex flex-col h-full px-6 w-72 bg-primary-blue justify-top py-8">
+    <div className="relative flex h-full min-h-screen">
+      <aside className="sticky top-0 z-20 flex flex-col max-h-screen px-6 py-8  w-72 bg-primary-blue">
         <img src={legalConnectBlueLogo} alt="Legal connect logo" className="mx-auto w-28" />
         <div className="flex flex-col mt-12 gap-4">
           {navLinks.map((navLink, index) => (
@@ -71,8 +71,8 @@ const LawyerDashboardNavigation = () => {
           </span>
         </div>
       </aside>
-      <div className="w-full">
-        <header className="flex items-center justify-between w-full px-10 py-3 shadow">
+      <div className="w-full h-full">
+        <header className="sticky top-0 z-50 flex items-center justify-between w-full px-10 py-3 shadow">
           <span className="text-xl text">Hi, Mateusz M</span>
           <span className="w-96">
             <InputField Icon={SearchIcon} placeholder="Search something" className="h-12 py-2" />
@@ -93,7 +93,7 @@ const LawyerDashboardNavigation = () => {
             </span>
           </nav>
         </header>
-        <div className="ml-6">
+        <div className="h-full ml-6">
           <Outlet />
         </div>
       </div>

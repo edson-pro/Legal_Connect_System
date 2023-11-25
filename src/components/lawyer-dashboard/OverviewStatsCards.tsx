@@ -35,18 +35,18 @@ const doughnutLabel = {
 
 const OverviewStatsCard = () => {
   return (
-    <div className="relative px-4 py-3 mt-6 border border-gray-200 grid grid-cols-3  rounded-xl gap-12">
+    <div className="relative px-4 py-3 mt-6 border border-gray-300/60 grid grid-cols-3  rounded-xl gap-12">
       {/* separators */}
-      <div className="absolute top-0 w-px h-full bg-gray-200 left-2/3"></div>
-      <div className="absolute top-0 w-px h-full bg-gray-200 left-1/3"></div>
+      <div className="absolute top-0 w-px h-full bg-gray-300/60 left-2/3"></div>
+      <div className="absolute top-0 w-px h-full bg-gray-300/60 left-1/3"></div>
 
       <div>
         <span className="text-black">Cases</span>
         <div className="flex items-center gap-5">
-          <div className="relative flex-1 flex-shrink-0 w-24">
+          <div className="relative flex-1 flex-shrink-0 w-24 max-w-[96px]">
             <Doughnut
               data={data}
-              options={{ spacing: 2, cutout: 27, responsive: true }}
+              options={{ spacing: 2, cutout: 28 }}
               plugins={[doughnutLabel]}
               className="w-full"
             />

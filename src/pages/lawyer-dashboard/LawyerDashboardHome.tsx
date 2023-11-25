@@ -1,117 +1,118 @@
+import CircleLeftIcon from "assets/icons/CircleLeftIcon";
+import QuoteIcon from "assets/icons/QuoteIcon";
 import ActiveCaseCard from "components/lawyer-dashboard/ActiveCaseCard";
+import ConnectionCard from "components/lawyer-dashboard/ConnectionCard";
+import LatestTransactionTable from "components/lawyer-dashboard/LatestTransactionTable";
 import OverviewStatsCard from "components/lawyer-dashboard/OverviewStatsCards";
+import Button from "components/ui/Button";
 
 const LawyerDashboardHome = () => {
   return (
-    <div>
+    <div className="h-full">
       <div className="grid grid-cols-7 gap-5">
         <div className="col-span-5">
           <OverviewStatsCard />
           <h3 className="mt-5 text-lg font-medium">Active cases</h3>
-          <div className="grid grid-cols-2 w-full gap-5 mt-4">
+          <div className="w-full mt-4 grid grid-cols-2 gap-5">
             <ActiveCaseCard />
             <ActiveCaseCard />
           </div>
-
-          <div className="w-full px-5 py-4 mt-6 border flex flex-col gap-3 rounded-xl">
+          <div className="flex flex-col w-full px-5 py-4 mt-6 border border-gray-300/60 gap-3 rounded-xl">
             <h3 className="text-lg font-medium">Latest transactions</h3>
-            <div className="relative overflow-x-auto">
-              <table className="w-full text-left rtl:text-right">
-                <thead className="font-normal">
-                  <tr>
-                    <th scope="col" className="font-normal pb-3">
-                      Names
-                    </th>
-                    <th scope="col" className="font-normal pb-3">
-                      Case
-                    </th>
-                    <th scope="col" className="font-normal pb-3">
-                      Date
-                    </th>
-                    <th scope="col" className="font-normal pb-3">
-                      Amount
-                    </th>
-                    <th scope="col" className="font-normal pb-3">
-                      Status
-                    </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td className="text-gray-900 whitespace-nowrap pt-3">
-                      <span className="inline-flex gap-4 items-center font-light">
-                        <span className="inline-block w-8 h-8">
-                          <img
-                            src="https://picsum.photos/200"
-                            alt="random image"
-                            className="w-full rounded-full"
-                          />
-                        </span>
-                        Lew Kapinos
-                      </span>
-                    </td>
-                    <td className="py-3">Criminal law</td>
-                    <td className="py-3">17 June 2023</td>
-                    <td className="py-3">10000 Us</td>
-                    <td>
-                      <div className="flex items-start gap-2">
-                        <span className="block mt-[6px] w-[10px] h-[10px] rounded-full bg-primary-blue" />
-                        <span>Done</span>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td className="text-gray-900 whitespace-nowrap pt-3">
-                      <span className="inline-flex gap-4 items-center font-light">
-                        <span className="inline-block w-8 h-8">
-                          <img
-                            src="https://picsum.photos/200"
-                            alt="random image"
-                            className="w-full rounded-full"
-                          />
-                        </span>
-                        Lew Kapinos
-                      </span>
-                    </td>
-                    <td className="py-3">Criminal law</td>
-                    <td className="py-3">17 June 2023</td>
-                    <td className="py-3">10000 Us</td>
-                    <td>
-                      <div className="flex items-start gap-2">
-                        <span className="block mt-[6px] w-[10px] h-[10px] rounded-full bg-primary-blue" />
-                        <span>Done</span>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td className="text-gray-900 whitespace-nowrap pt-3">
-                      <span className="inline-flex gap-4 items-center font-light">
-                        <span className="inline-block w-8 h-8">
-                          <img
-                            src="https://picsum.photos/200"
-                            alt="random image"
-                            className="w-full rounded-full"
-                          />
-                        </span>
-                        Lew Kapinos
-                      </span>
-                    </td>
-                    <td className="py-3">Criminal law</td>
-                    <td className="py-3">17 June 2023</td>
-                    <td className="py-3">10000 Us</td>
-                    <td>
-                      <div className="flex items-start gap-2">
-                        <span className="block mt-[6px] w-[10px] h-[10px] rounded-full bg-primary-blue" />
-                        <span>Done</span>
-                      </div>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
+            <LatestTransactionTable />
+          </div>
+        </div>
+        <div className="p-5 border-l col-span-2">
+          <div className="flex justify-between">
+            <h3 className="relative flex text-lg font-normal">
+              Demo Requests
+              <span className="absolute -right-8 mt-[6px] inline-flex items-center justify-center w-4 h-4 ml-5 text-xs text-white rounded-full bg-primary-yellow">
+                4
+              </span>
+            </h3>
+            <button className="text-primary-blue">View all</button>
+          </div>
+          <div className="flex items-center justify-between p-3 mt-3 border border-gray-300/60 rounded-xl">
+            <div className="flex items-center gap-2">
+              <span className="inline-block w-10 h-10">
+                <img
+                  src="https://picsum.photos/200"
+                  alt="random image"
+                  className="w-full rounded-full"
+                />
+              </span>
+              <div>
+                <span>Mateusz Majewski</span>
+                <span className="flex items-center text-sm gap-1 text-primary-blue">
+                  Criminal law
+                </span>
+              </div>
+            </div>
+            <Button className="px-4 py-1 rounded-full">Reply</Button>
+          </div>
+
+          <div className="flex justify-between mt-8">
+            <h3 className="relative flex text-lg font-normal">
+              New connections
+              <span className="absolute -right-8 mt-[6px] inline-flex items-center justify-center w-4 h-4 ml-5 text-xs text-white rounded-full bg-primary-yellow">
+                4
+              </span>
+            </h3>
+            <button className="text-primary-blue">View all</button>
+          </div>
+
+          <div className="flex flex-col mt-4 gap-4">
+            {[1, 2, 3].map((number) => (
+              <>
+                <ConnectionCard key={number} />
+              </>
+            ))}
+          </div>
+          <div className="mt-8">
+            <div className="flex justify-between">
+              <h3 className="relative flex text-lg font-normal">
+                Reviews
+                <span className="absolute -right-8 mt-[6px] inline-flex items-center justify-center w-4 h-4 ml-5 text-xs text-white rounded-full bg-primary-yellow">
+                  4
+                </span>
+              </h3>
+              <button className="text-primary-blue">View all</button>
+            </div>
+            <div className="flex flex-col p-4 mt-4 border bg-primary-light-blue border-primary-blue/10 gap-2 rounded-xl">
+              <QuoteIcon />
+              <p className="line-clamp-3">
+                Didn't place digital principles culture spaces. Break competit--ors able break
+                relaxation exploratory event. Recap strategies ideal.
+              </p>
+              <div className="flex items-center justify-between mt-4">
+                <div className="flex items-center gap-2">
+                  <span className="inline-block w-10 h-10">
+                    <img
+                      src="https://picsum.photos/200"
+                      alt="random image"
+                      className="w-full rounded-full"
+                    />
+                  </span>
+                  <div>
+                    <span>Bigizi Joseph</span>
+                    <span className="flex items-center text-sm gap-1 text-primary-gray">
+                      Student
+                    </span>
+                  </div>
+                </div>
+                <Button className="px-4 py-1 text-sm rounded-full">Publish</Button>
+              </div>
+            </div>
+            <div className="flex justify-end mt-3 gap-4 text-primary-blue">
+              <button className="group w-fit rounded-full">
+                <CircleLeftIcon className="group-hover:text-white group-hover:bg-primary-blue group-hover:rounded-full" />
+              </button>
+              <button className="rotate-180 group">
+                <CircleLeftIcon className="group-hover:text-white group-hover:bg-primary-blue group-hover:rounded-full" />
+              </button>
             </div>
           </div>
         </div>
-        <div className="col-span-2 h-screen border-l"></div>
       </div>
     </div>
   );

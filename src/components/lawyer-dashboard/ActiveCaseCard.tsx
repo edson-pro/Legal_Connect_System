@@ -1,6 +1,6 @@
 const ActiveCaseCard = () => {
   return (
-    <div className="w-full p-6 border flex flex-col gap-3 rounded-xl">
+    <div className="flex flex-col w-full p-6 border border-gray-300/60 gap-3 rounded-xl">
       <div className="flex items-center gap-4">
         <span className="inline-block w-10 h-10">
           <img src="https://picsum.photos/200" alt="random image" className="w-full rounded-full" />
