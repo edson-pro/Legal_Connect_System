@@ -47,7 +47,7 @@ const router = createBrowserRouter(
         </Route>
         <Route path="client-portal">
           <Route element={<ClientPortalNavigation />}>
-            <Route index element={<ClientPortalHome />} />
+            <Route index  element={<ClientPortalHome />} />
             <Route path="lawyers">
               <Route path=":id" element={<LawyerProfile />} />
             </Route>

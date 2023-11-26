@@ -1,16 +1,27 @@
 import { Tab } from "@headlessui/react";
 import CircleAddIcon from "assets/icons/CircleAddIcon";
 import ActiveCaseCard from "components/lawyer-dashboard/ActiveCaseCard";
+import AddCaseForms from "components/lawyer-dashboard/AddCaseForms";
 import Button from "components/ui/Button";
+import Modal from "components/wrappers/Modal";
+import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const CasesPage = () => {
+  const [addCaseFormOpen, setAddCaseFormOpen] = useState(false);
   function classNames(...classes: (string | boolean)[]) {
     return classes.filter(Boolean).join(" ");
   }
 
+  const openModal = () => setAddCaseFormOpen(true);
+  const closeModal = () => setAddCaseFormOpen(false);
+
   return (
     <div className="relative mt-5">
-      <Button className="absolute right-0 flex px-5 mt-2 ml-auto rounded-2xl gap-3">
+      <Button
+        className="absolute right-0 flex px-5 mt-2 ml-auto rounded-2xl gap-3"
+        onClick={openModal}
+      >
         <CircleAddIcon />
         Add case
       </Button>
@@ -39,21 +50,28 @@ const CasesPage = () => {
         <Tab.Panels className="mt-2">
           <Tab.Panel className="w-full grid grid-cols-3 gap-8">
             {[0, 1, 2].map((number) => (
-              <ActiveCaseCard key={number} />
+              <Link to={number.toString()}>
+                <ActiveCaseCard key={number} />
+              </Link>
             ))}
           </Tab.Panel>
           <Tab.Panel className="w-full grid grid-cols-3 gap-8">
             {[0, 1].map((number) => (
-              <div>
+              <Link to={number.toString()}>
                 <ActiveCaseCard key={number} />
-              </div>
+              </Link>
             ))}
           </Tab.Panel>
           <Tab.Panel className="w-full grid grid-cols-3 gap-8">
-            <ActiveCaseCard />
+            <Link to="7">
+              <ActiveCaseCard />
+            </Link>
           </Tab.Panel>
         </Tab.Panels>
       </Tab.Group>
+      <Modal title="Create new case" isOpen={addCaseFormOpen} onClose={closeModal}>
+        <AddCaseForms closeModal={closeModal} />
+      </Modal>
     </div>
   );
 };

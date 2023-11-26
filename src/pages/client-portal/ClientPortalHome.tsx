@@ -1,7 +1,7 @@
 import ArrowUp from "assets/icons/ArrowUp";
 import TickIcon from "assets/icons/TickIcon";
-import LawyerCaseCard from "components/client-portal/ui/LawyerCaseCard";
 import LaywerCard from "components/client-portal/ui/LaywerCard";
+import UserCaseCard from "components/client-portal/ui/UserCaseCard";
 import Button from "components/ui/Button";
 import CenterContent from "components/wrappers/CenterContent";
 import Modal from "components/wrappers/Modal";
@@ -32,7 +32,7 @@ const ClientPortalHome = () => {
       </button>
       <Modal title="Payment request" isOpen={isOpen} onClose={closeModal}>
         <div className="mt-5">
-          <LawyerCaseCard />
+          <UserCaseCard user="Lawyer" />
         </div>
         <div className="mt-5">
           <span className="block text-[#A4A4A4]">Amount</span>

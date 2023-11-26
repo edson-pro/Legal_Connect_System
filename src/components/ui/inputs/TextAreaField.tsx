@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { TextareaHTMLAttributes, forwardRef } from "react";
+import { twMerge } from "tailwind-merge";
 
 interface Props extends TextareaHTMLAttributes<HTMLTextAreaElement> {
   label?: string;
@@ -19,9 +20,11 @@ const TextAreaField = forwardRef<HTMLInputElement, Props>(
         <div className="relative flex items-center">
           <textarea
             placeholder={props.placeholder}
-            className={`w-full resize-y bg-primary-light-blue px-5 py-4 mt-2 rounded-xl border-2 active:outline outline-primary-blue border-gray-100 ${
-              error ? "border-red-600" : "border-base-content/50"
-            } ${className ?? ""}`}
+            className={twMerge(
+              `w-full resize-y bg-primary-light-blue px-5 py-4 mt-2 rounded-xl border-2 active:outline outline-primary-blue border-gray-100 ${
+                error ? "border-red-600" : "border-base-content/50"
+              } ${className ?? ""}`
+            )}
             {...props}
           />
         </div>

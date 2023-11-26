@@ -1,11 +1,16 @@
 import LocationIcon from "assets/icons/LocationIcon";
+import { FC } from "react";
 
-const LawyerCaseCard = () => {
+interface Props {
+  user: "Lawyer" | "Client";
+}
+
+const UserCaseCard: FC<Props> = ({ user }) => {
   return (
     <div className="relative pt-4 pb-5 border grid grid-cols-2 border-gray-200/70 rounded-md">
       <span className="absolute self-center w-px h-full bg-gray-200/70 justify-self-center"></span>
       <div className="px-4">
-        <span className="text-primary-blue">Lawyer</span>
+        <span className="text-primary-blue">{user}</span>
         <div className="flex items-center mt-2 gap-2">
           <span className="inline-block w-12 h-12">
             <img
@@ -33,4 +38,4 @@ const LawyerCaseCard = () => {
     </div>
   );
 };
-export default LawyerCaseCard;
+export default UserCaseCard;

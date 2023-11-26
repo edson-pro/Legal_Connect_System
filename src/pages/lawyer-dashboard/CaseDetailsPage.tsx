@@ -4,13 +4,34 @@ import AttachIcon from "assets/icons/AttachIcon";
 import CircleAddIcon from "assets/icons/CircleAddIcon";
 import DeleteIcon from "assets/icons/DeleteIcon";
 import DocumentIcon from "assets/icons/DocumentIcon";
-import ActiveCaseCard from "components/lawyer-dashboard/ActiveCaseCard";
+import UserCaseCard from "components/client-portal/ui/UserCaseCard";
 import Button from "components/ui/Button";
+import InputField from "components/ui/inputs/InputField";
+import TextAreaField from "components/ui/inputs/TextAreaField";
+import Modal from "components/wrappers/Modal";
+import { useState } from "react";
 
 const CaseDetailsPage = () => {
+  const [modalOpen, setModalOpen] = useState(false);
+  const [formState, setFormState] = useState(1);
+
   function classNames(...classes: (string | boolean)[]) {
     return classes.filter(Boolean).join(" ");
   }
+
+  const openModal = () => {
+    setFormState(1);
+    setModalOpen(true);
+  };
+  const closeModal = () => setModalOpen(false);
+
+  const handleStepChange = () => {
+    if (formState === 2) {
+      closeModal();
+      return;
+    }
+    setFormState((prev) => prev + 1);
+  };
 
   return (
     <div className="mt-6">
@@ -31,7 +52,9 @@ const CaseDetailsPage = () => {
             </div>
           </div>
         </div>
-        <Button className="px-8 rounded-xl">Request Payment</Button>
+        <Button className="px-8 rounded-xl" onClick={openModal}>
+          Request Payment
+        </Button>
       </div>
       <Tab.Group>
         <Tab.List className="flex max-w-md mt-10 space-x-1">
@@ -98,7 +121,7 @@ const CaseDetailsPage = () => {
                       Lorem ipsum dolor sit amet consectetur. Faucibus massa egestas ipsum rutrum.
                       Mollis volutpat ultrices.
                     </p>
-                    <button className="mt-8 flex text-primary-blue justify-center justify-self-center gap-3">
+                    <button className="flex justify-center mt-8 text-primary-blue justify-self-center gap-3">
                       <AttachIcon />
                       Attach document
                     </button>
@@ -106,25 +129,79 @@ const CaseDetailsPage = () => {
                 </div>
               </div>
               <div className="p-6 border rounded-xl">
-                <button className="flex spaced-dashed-border w-full py-4 items-center text-primary-blue gap-3 justify-center">
+                <button className="flex items-center justify-center w-full py-4 spaced-dashed-border text-primary-blue gap-3">
                   <AddIcon />
                   Add stage
                 </button>
               </div>
             </div>
           </Tab.Panel>
-          <Tab.Panel className="w-full grid grid-cols-3 gap-8">
-            {[0, 1].map((number) => (
-              <div>
-                <ActiveCaseCard key={number} />
-              </div>
-            ))}
-          </Tab.Panel>
-          <Tab.Panel className="w-full grid grid-cols-3 gap-8">
-            <ActiveCaseCard />
-          </Tab.Panel>
+          <Tab.Panel className="w-full grid grid-cols-3 gap-8"></Tab.Panel>
+          <Tab.Panel className="w-full grid grid-cols-3 gap-8"></Tab.Panel>
         </Tab.Panels>
       </Tab.Group>
+
+      <Modal isOpen={modalOpen} title="Payment request" onClose={closeModal}>
+        <div className="mt-5">
+          <UserCaseCard user="Client" />
+        </div>
+        {formState === 1 && (
+          <div className="mt-3 grid grid-cols-5 gap-4">
+            <div className="col-span-3">
+              <InputField
+                placeholder="Enter amount"
+                className="h-12 bg-transparent rounded-sm"
+                label="Amount"
+              />
+            </div>
+            <div className="col-span-2">
+              <InputField
+                placeholder="Enter amount"
+                className="h-12 bg-transparent rounded-sm"
+                label="Currency"
+              />
+            </div>
+            <div className="col-span-5">
+              <TextAreaField
+                placeholder="Enter amount"
+                className="bg-transparent rounded-sm h-28"
+                label="Description"
+              />
+            </div>
+          </div>
+        )}
+
+        {formState === 2 && (
+          <div>
+            <div className="mt-5">
+              <span className="text-[#A4A4A4]">Amount</span>
+              <span className="block text-2xl font-normal">$ 200,000</span>
+            </div>
+            <div className="mt-5">
+              <span className="text-[#A4A4A4]">Description</span>
+              <p>
+                About viral we horse message marginalised marginalised closest. They site elephant
+                interim hammer up. Criticality closer language feature interim protocol note market
+                social.
+              </p>
+            </div>
+          </div>
+        )}
+
+        <div
+          className={`flex mt-5 ml-auto gap-4 ${
+            formState === 2 ? "justify-center" : "justify-end"
+          }`}
+        >
+          <Button
+            className="inline-flex items-center px-8 rounded-2xl gap-2"
+            autoFocus
+            onClick={handleStepChange}
+          >
+            {formState === 1 ? "Request payment" : "Confirm Request"}
+          </Button>
+        </div>
+      </Modal>
     </div>
   );
 };

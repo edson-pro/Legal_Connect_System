@@ -1,7 +1,5 @@
 import CircleAddIcon from "assets/icons/CircleAddIcon";
-import ConnectionIcon from "assets/icons/ConnectionIcon";
 import DocumentIcon from "assets/icons/DocumentIcon";
-import FinanceIcon from "assets/icons/FinanceIcon";
 import HomeIcon from "assets/icons/HomeIcon";
 import MessageIcon from "assets/icons/MessageIcon";
 import NotificationIcon from "assets/icons/NotificationIcon";
@@ -25,14 +23,9 @@ const LawyerDashboardNavigation = () => {
       link: "/cases",
     },
     {
-      label: "Connects",
-      Icon: ConnectionIcon,
+      label: "Chats",
+      Icon: MessageIcon,
       link: "/connects",
-    },
-    {
-      label: "Finance",
-      Icon: FinanceIcon,
-      link: "/finance",
     },
     {
       label: "Profile",
@@ -48,10 +41,10 @@ const LawyerDashboardNavigation = () => {
         <div className="flex flex-col mt-12 gap-4">
           {navLinks.map((navLink, index) => (
             <NavLink
-              end
+              end={index === 0}
               to={`/lawyer-dashboard${navLink.link}`}
               className={({ isActive }) =>
-                `flex px-4 py-3  rounded-xl gap-4  ${
+                `flex px-4 py-3 items-center rounded-xl gap-4  ${
                   isActive ? "bg-primary-yellow text-primary-blue" : "text-white hover:bg-[#175a79]"
                 }`
               }

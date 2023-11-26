@@ -8,7 +8,7 @@ interface Props extends InputHTMLAttributes<HTMLInputElement> {
   Icon?: FC;
 }
 
-const InputField = forwardRef<HTMLInputElement, Props>(
+const DatePickerField = forwardRef<HTMLInputElement, Props>(
   ({ label, className, required, error, errorMessage, Icon, ...props }, ref) => {
     return (
       <div className="w-full">
@@ -25,7 +25,7 @@ const InputField = forwardRef<HTMLInputElement, Props>(
           )}
 
           <input
-            type={props.type ?? "text"}
+            type="date"
             placeholder={props.placeholder}
             className={twMerge(
               `w-full bg-primary-light-blue px-5 py-4 mt-2 rounded-xl border-2 active:outline outline-primary-blue border-gray-100 ${
@@ -45,6 +45,6 @@ const InputField = forwardRef<HTMLInputElement, Props>(
   }
 );
 
-InputField.displayName = "InputField";
+DatePickerField.displayName = "InputField";
 
-export default InputField;
+export default DatePickerField;
