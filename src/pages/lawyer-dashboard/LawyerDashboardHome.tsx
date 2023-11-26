@@ -22,7 +22,7 @@ const LawyerDashboardHome = () => {
             <LatestTransactionTable />
           </div>
         </div>
-        <div className="p-5 border-l col-span-2">
+        <div className="py-5 pl-5 border-l col-span-2">
           <div className="flex justify-between">
             <h3 className="relative flex text-lg font-normal">
               Demo Requests
@@ -104,7 +104,7 @@ const LawyerDashboardHome = () => {
               </div>
             </div>
             <div className="flex justify-end mt-3 gap-4 text-primary-blue">
-              <button className="group w-fit rounded-full">
+              <button className="rounded-full group w-fit">
                 <CircleLeftIcon className="group-hover:text-white group-hover:bg-primary-blue group-hover:rounded-full" />
               </button>
               <button className="rotate-180 group">

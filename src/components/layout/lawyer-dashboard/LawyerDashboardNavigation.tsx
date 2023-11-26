@@ -93,7 +93,7 @@ const LawyerDashboardNavigation = () => {
             </span>
           </nav>
         </header>
-        <div className="h-full ml-6">
+        <div className="h-full mx-6">
           <Outlet />
         </div>
       </div>

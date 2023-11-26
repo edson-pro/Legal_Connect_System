@@ -9,8 +9,8 @@ const CasesPage = () => {
   }
 
   return (
-    <div className="mt-5 relative pr-10">
-      <Button className="flex rounded-2xl gap-3 absolute ml-auto right-12 px-5 mt-2">
+    <div className="relative mt-5">
+      <Button className="absolute right-0 flex px-5 mt-2 ml-auto rounded-2xl gap-3">
         <CircleAddIcon />
         Add case
       </Button>
@@ -37,19 +37,19 @@ const CasesPage = () => {
           ))}
         </Tab.List>
         <Tab.Panels className="mt-2">
-          <Tab.Panel className="grid grid-cols-3 w-full gap-8">
+          <Tab.Panel className="w-full grid grid-cols-3 gap-8">
             {[0, 1, 2].map((number) => (
               <ActiveCaseCard key={number} />
             ))}
           </Tab.Panel>
-          <Tab.Panel className="grid grid-cols-3 w-full gap-8">
+          <Tab.Panel className="w-full grid grid-cols-3 gap-8">
             {[0, 1].map((number) => (
               <div>
                 <ActiveCaseCard key={number} />
               </div>
             ))}
           </Tab.Panel>
-          <Tab.Panel className="grid grid-cols-3 w-full gap-8">
+          <Tab.Panel className="w-full grid grid-cols-3 gap-8">
             <ActiveCaseCard />
           </Tab.Panel>
         </Tab.Panels>
