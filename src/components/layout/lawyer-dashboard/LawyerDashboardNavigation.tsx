@@ -1,6 +1,7 @@
 import CircleAddIcon from "assets/icons/CircleAddIcon";
 import DocumentIcon from "assets/icons/DocumentIcon";
 import HomeIcon from "assets/icons/HomeIcon";
+import MenuIcon from "assets/icons/MenuIcon";
 import MessageIcon from "assets/icons/MessageIcon";
 import NotificationIcon from "assets/icons/NotificationIcon";
 import SearchIcon from "assets/icons/SearchIcon";
@@ -8,60 +9,80 @@ import UserIcon from "assets/icons/UserIcon";
 import legalConnectBlueLogo from "assets/images/legal-connect-blue-logo.png";
 import Button from "components/ui/Button";
 import InputField from "components/ui/inputs/InputField";
+import { useState } from "react";
 import { NavLink, Outlet } from "react-router-dom";
 
+const navLinks = [
+  {
+    label: "Home",
+    Icon: HomeIcon,
+    link: "",
+  },
+  {
+    label: "Cases",
+    Icon: DocumentIcon,
+    link: "/cases",
+  },
+  {
+    label: "Chats",
+    Icon: MessageIcon,
+    link: "/connects",
+  },
+  {
+    label: "Profile",
+    Icon: UserIcon,
+    link: "/profile",
+  },
+];
+
 const LawyerDashboardNavigation = () => {
-  const navLinks = [
-    {
-      label: "Home",
-      Icon: HomeIcon,
-      link: "",
-    },
-    {
-      label: "Cases",
-      Icon: DocumentIcon,
-      link: "/cases",
-    },
-    {
-      label: "Chats",
-      Icon: MessageIcon,
-      link: "/connects",
-    },
-    {
-      label: "Profile",
-      Icon: UserIcon,
-      link: "/profile",
-    },
-  ];
+  const [sidebarExpanded, setSidebarExpanded] = useState(false);
+
+  const toggleSidebar = () => setSidebarExpanded((prev) => !prev);
 
   return (
     <div className="relative flex h-full min-h-screen">
-      <aside className="sticky top-0 z-20 flex flex-col max-h-screen px-6 py-8  w-72 bg-primary-blue">
-        <img src={legalConnectBlueLogo} alt="Legal connect logo" className="mx-auto w-28" />
+      <aside
+        className={`sticky top-0 z-20 flex flex-col py-8 max-h-screen bg-primary-blue transition-all ease-out duration-200 ${
+          sidebarExpanded ? "w-72 px-6" : "px-[8px] w-[72px]"
+        }`}
+      >
+        <button onClick={toggleSidebar}>
+          <MenuIcon className="absolute w-6 h-6 mt-px text-white border-white rounded right-6" />
+        </button>
+        {sidebarExpanded && (
+          <img src={legalConnectBlueLogo} alt="Legal connect logo" className="w-28" />
+        )}
+
         <div className="flex flex-col mt-12 gap-4">
           {navLinks.map((navLink, index) => (
             <NavLink
               end={index === 0}
               to={`/lawyer-dashboard${navLink.link}`}
               className={({ isActive }) =>
-                `flex px-4 py-3 items-center rounded-xl gap-4  ${
+                `flex px-4 py-3 items-center rounded-xl gap-4 ${
                   isActive ? "bg-primary-yellow text-primary-blue" : "text-white hover:bg-[#175a79]"
                 }`
               }
               key={index}
             >
-              <navLink.Icon className="w-5 h-5" />
-              {navLink.label}
+              {({ isActive }) => (
+                <>
+                  <navLink.Icon className="w-5 h-5" />
+                  {sidebarExpanded && navLink.label}
+                  {sidebarExpanded && ["Cases", "Chats"].includes(navLink.label) && (
+                    <span
+                      className={`flex items-center justify-center w-6 h-6 ml-auto rounded-full text-primary-blue ${
+                        isActive ? "bg-white" : "bg-primary-yellow"
+                      }`}
+                    >
+                      2
+                    </span>
+                  )}
+                </>
+              )}
             </NavLink>
           ))}
-
-          <span className="flex items-center px-4 py-3 text-white rounded-xl gap-3">
-            <DocumentIcon />
-            Cases
-            <span className="flex items-center justify-center w-6 h-6 ml-auto rounded-full bg-primary-yellow text-primary-blue">
-              2
-            </span>
-          </span>
         </div>
       </aside>
       <div className="w-full h-full">

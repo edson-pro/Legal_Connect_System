@@ -168,7 +168,7 @@ const AddCaseForms: FC<Props> = ({ closeModal }) => {
       {formStep === 3 && (
         <>
           <h4 className="text-lg font-normal text-primary-blue">Select practice areas</h4>
-          <div className="flex flex-wrap gap-4 mt-4">
+          <div className="flex flex-wrap mt-4 gap-4">
             {lawyersPracticeAreas.slice(6).map((area, index) => (
               <TagRadioButton
                 label={area}
@@ -195,7 +195,7 @@ const AddCaseForms: FC<Props> = ({ closeModal }) => {
             <TextAreaField
               label="Description"
               placeholder="Enter description"
-              className="bg-transparent h-40"
+              className="h-40 bg-transparent"
             />
           </div>
         </>
@@ -204,10 +204,10 @@ const AddCaseForms: FC<Props> = ({ closeModal }) => {
       {formStep === 5 && (
         <>
           <div className="grid grid-cols-2 gap-5">
-            <DatePickerField label="Start date" className="bg-transparent h-12" />
-            <DatePickerField label="End date" className="bg-transparent h-12" />
+            <DatePickerField label="Start date" className="h-12 bg-transparent" />
+            <DatePickerField label="End date" className="h-12 bg-transparent" />
           </div>
-          <div className="grid grid-cols-3 gap-5 mt-6">
+          <div className="mt-6 grid grid-cols-3 gap-5">
             <div className="col-span-2">
               <InputField
                 placeholder="Enter amount"
