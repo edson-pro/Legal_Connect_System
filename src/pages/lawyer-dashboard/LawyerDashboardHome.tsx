@@ -5,6 +5,7 @@ import ConnectionCard from "components/lawyer-dashboard/ConnectionCard";
 import LatestTransactionTable from "components/lawyer-dashboard/LatestTransactionTable";
 import OverviewStatsCard from "components/lawyer-dashboard/OverviewStatsCards";
 import Button from "components/ui/Button";
+import { Link } from "react-router-dom";
 
 const LawyerDashboardHome = () => {
   return (
@@ -14,8 +15,12 @@ const LawyerDashboardHome = () => {
           <OverviewStatsCard />
           <h3 className="mt-5 text-lg font-medium">Active cases</h3>
           <div className="w-full mt-4 grid grid-cols-2 gap-5">
-            <ActiveCaseCard />
-            <ActiveCaseCard />
+            <Link to="cases/2">
+              <ActiveCaseCard />
+            </Link>
+            <Link to="cases/2">
+              <ActiveCaseCard />
+            </Link>
           </div>
           <div className="flex flex-col w-full px-5 py-4 mt-6 border border-gray-300/60 gap-3 rounded-xl">
             <h3 className="text-lg font-medium">Latest transactions</h3>

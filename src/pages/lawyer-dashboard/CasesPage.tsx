@@ -50,14 +50,14 @@ const CasesPage = () => {
         <Tab.Panels className="mt-2">
           <Tab.Panel className="w-full grid grid-cols-3 gap-8">
             {[0, 1, 2].map((number) => (
-              <Link to={number.toString()}>
+              <Link to={number.toString()} key={number}>
                 <ActiveCaseCard key={number} />
               </Link>
             ))}
           </Tab.Panel>
           <Tab.Panel className="w-full grid grid-cols-3 gap-8">
             {[0, 1].map((number) => (
-              <Link to={number.toString()}>
+              <Link to={number.toString()} key={number}>
                 <ActiveCaseCard key={number} />
               </Link>
             ))}

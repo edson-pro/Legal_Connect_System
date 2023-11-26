@@ -26,7 +26,7 @@ const navLinks = [
   {
     label: "Chats",
     Icon: MessageIcon,
-    link: "/connects",
+    link: "/chats",
   },
   {
     label: "Profile",
@@ -36,7 +36,7 @@ const navLinks = [
 ];
 
 const LawyerDashboardNavigation = () => {
-  const [sidebarExpanded, setSidebarExpanded] = useState(false);
+  const [sidebarExpanded, setSidebarExpanded] = useState(true);
 
   const toggleSidebar = () => setSidebarExpanded((prev) => !prev);
 
@@ -86,7 +86,7 @@ const LawyerDashboardNavigation = () => {
         </div>
       </aside>
       <div className="w-full h-full">
-        <header className="sticky top-0 z-50 flex items-center justify-between w-full px-10 py-3 shadow">
+        <header className="sticky top-0 z-50 bg-white flex items-center justify-between w-full px-10 py-3 shadow">
           <span className="text-xl text">Hi, Mateusz M</span>
           <span className="w-96">
             <InputField Icon={SearchIcon} placeholder="Search something" className="h-12 py-2" />
