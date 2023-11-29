@@ -1,15 +1,16 @@
 import SearchIcon from "assets/icons/SearchIcon";
+import SendIcon from "assets/icons/SendIcon";
+import UserAvatarCard from "components/ui/UserAvatarCard";
 import InputField from "components/ui/inputs/InputField";
 
 const ChatsPage = () => {
   return (
-    <div className="grid grid-cols-5">
-      <div className="relative bg-white">
-        <div className="sticky top-20 bg-white">
+    <div className="max-h-full grid grid-cols-5">
+      <div className="relative bg-[#FCFCFC]">
+        <div className="sticky bg-white top-20">
           <InputField Icon={SearchIcon} placeholder="Search connection" className="h-12" />
         </div>
-
-        <div className="flex flex-col mt-4 gap-8 overflow-y-scroll pb-8">
+        <div className="flex flex-col mt-4 gap-8 max-h-[82vh] overflow-y-auto pb-8 pr-2">
           {Array(15)
             .fill(0)
             // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -39,7 +40,92 @@ const ChatsPage = () => {
             ))}
         </div>
       </div>
-      <div className="col-span-3"></div>
+      <div className="relative col-span-3 h-fit">
+        <div className="sticky top-[80px] px-3 py-2 bg-[#FCFCFC] border-b border-gray-200/50">
+          <UserAvatarCard
+            heading="Felix Nsengimana"
+            subHeading="2 new messages"
+            subHeadingClassName="text-primary-blue"
+          />
+        </div>
+        <div className="px-4 pt-4 pb-10 max-h-[82vh] overflow-scroll">
+          <div className="flex items-start gap-1 mb-20">
+            <span className="flex items-center w-8 h-8">
+              <img
+                src="https://picsum.photos/200"
+                alt="random image"
+                className="w-full rounded-full"
+              />
+            </span>
+            <div className="flex flex-col gap-2">
+              <span className="items-start block -mt-px text-sm font-normal">
+                Sam Kalimba <span>8:32 AM</span>
+              </span>
+              <p className="p-3 bg-[#F4FCFF] rounded w-fit max-w-sm border border-primary-blue/5">
+                Yes Divin! Nice talking to you again! Did you know that we had an alumni event in
+                newyork city the previous Sunday?
+              </p>
+              <p className="p-3 bg-[#F4FCFF] rounded w-fit max-w-sm border border-primary-blue/5">
+                Give me a second! I will share pictures
+              </p>
+            </div>
+          </div>
+
+          <div className="flex justify-end mb-20">
+            <div className="flex flex-col gap-2 items-end">
+              <p className="p-3 bg-primary-blue text-white rounded w-fit max-w-sm border border-primary-blue/5">
+                I can joy in your eyes people! You absolutely enjoyed the event hhh yours!
+              </p>
+              <p className="p-3 bg-primary-blue text-white rounded w-fit max-w-sm border border-primary-blue/5">
+                Give me a second! I will share pictures
+              </p>
+            </div>
+          </div>
+
+          <div className="flex items-start gap-1 mb-20">
+            <span className="flex items-center w-8 h-8">
+              <img
+                src="https://picsum.photos/200"
+                alt="random image"
+                className="w-full rounded-full"
+              />
+            </span>
+            <div className="flex flex-col gap-2">
+              <span className="items-start block -mt-px text-sm font-normal">
+                Sam Kalimba <span>8:32 AM</span>
+              </span>
+              <p className="p-3 bg-[#F4FCFF] rounded w-fit max-w-sm border border-primary-blue/5">
+                Yes Divin! Nice talking to you again! Did you know that we had an alumni event in
+                newyork city the previous Sunday?
+              </p>
+              <p className="p-3 bg-[#F4FCFF] rounded w-fit max-w-sm border border-primary-blue/5">
+                Give me a second! I will share pictures
+              </p>
+            </div>
+          </div>
+
+          <div className="flex justify-end mb-20">
+            <div className="flex flex-col gap-2 items-end">
+              <p className="p-3 bg-primary-blue text-white rounded w-fit max-w-sm border border-primary-blue/5">
+                I can joy in your eyes people! You absolutely enjoyed the event hhh yours!
+              </p>
+              <p className="p-3 bg-primary-blue text-white rounded w-fit max-w-sm border border-primary-blue/5">
+                Give me a second! I will share pictures
+              </p>
+            </div>
+          </div>
+          <div className="h-20 bg-white w-full absolute z-30 bottom-0">
+            <textarea
+              className="w-full bg-[#F8F5F5] rounded-xl h-full pt-4 px-4 resize-none"
+              placeholder="Type a messages.."
+            ></textarea>
+
+            <button className="absolute p-2 bg-primary-yellow rounded-full right-4 top-1/2 text-white -translate-y-1/2">
+              <SendIcon />
+            </button>
+          </div>
+        </div>
+      </div>
       <div></div>
     </div>
   );
