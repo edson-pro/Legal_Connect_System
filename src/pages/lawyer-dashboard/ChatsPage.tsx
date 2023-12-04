@@ -49,7 +49,7 @@ const ChatsPage = () => {
           />
         </div>
         <div className="px-4 pt-4 pb-10 max-h-[82vh] overflow-scroll">
-          <div className="flex items-start gap-1 mb-20">
+          <div className="flex items-start mb-20 gap-1">
             <span className="flex items-center w-8 h-8">
               <img
                 src="https://picsum.photos/200"
@@ -72,17 +72,17 @@ const ChatsPage = () => {
           </div>
 
           <div className="flex justify-end mb-20">
-            <div className="flex flex-col gap-2 items-end">
-              <p className="p-3 bg-primary-blue text-white rounded w-fit max-w-sm border border-primary-blue/5">
+            <div className="flex flex-col items-end gap-2">
+              <p className="max-w-sm p-3 text-white border rounded bg-primary-blue w-fit border-primary-blue/5">
                 I can joy in your eyes people! You absolutely enjoyed the event hhh yours!
               </p>
-              <p className="p-3 bg-primary-blue text-white rounded w-fit max-w-sm border border-primary-blue/5">
+              <p className="max-w-sm p-3 text-white border rounded bg-primary-blue w-fit border-primary-blue/5">
                 Give me a second! I will share pictures
               </p>
             </div>
           </div>
 
-          <div className="flex items-start gap-1 mb-20">
+          <div className="flex items-start mb-20 gap-1">
             <span className="flex items-center w-8 h-8">
               <img
                 src="https://picsum.photos/200"
@@ -105,22 +105,22 @@ const ChatsPage = () => {
           </div>
 
           <div className="flex justify-end mb-20">
-            <div className="flex flex-col gap-2 items-end">
-              <p className="p-3 bg-primary-blue text-white rounded w-fit max-w-sm border border-primary-blue/5">
+            <div className="flex flex-col items-end gap-2">
+              <p className="max-w-sm p-3 text-white border rounded bg-primary-blue w-fit border-primary-blue/5">
                 I can joy in your eyes people! You absolutely enjoyed the event hhh yours!
               </p>
-              <p className="p-3 bg-primary-blue text-white rounded w-fit max-w-sm border border-primary-blue/5">
+              <p className="max-w-sm p-3 text-white border rounded bg-primary-blue w-fit border-primary-blue/5">
                 Give me a second! I will share pictures
               </p>
             </div>
           </div>
-          <div className="h-20 bg-white w-full absolute z-30 bottom-0">
+          <div className="absolute bottom-0 z-30 w-full h-20 bg-white">
             <textarea
               className="w-full bg-[#F8F5F5] rounded-xl h-full pt-4 px-4 resize-none"
               placeholder="Type a messages.."
             ></textarea>
 
-            <button className="absolute p-2 bg-primary-yellow rounded-full right-4 top-1/2 text-white -translate-y-1/2">
+            <button className="absolute p-2 text-white rounded-full bg-primary-yellow right-4 top-1/2 -translate-y-1/2">
               <SendIcon />
             </button>
           </div>

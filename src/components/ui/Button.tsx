@@ -1,11 +1,13 @@
 import { ButtonHTMLAttributes, FC, PropsWithChildren } from "react";
 import { twMerge } from "tailwind-merge";
+import Spinner from "./Spinner";
 
 interface Props extends ButtonHTMLAttributes<HTMLButtonElement>, PropsWithChildren {
   fullWidth?: boolean;
+  loading?: boolean;
 }
 
-const Button: FC<Props> = ({ children, fullWidth, className, ...props }) => {
+const Button: FC<Props> = ({ children, fullWidth, className, loading, ...props }) => {
   return (
     <button
       className={twMerge(
@@ -15,7 +17,7 @@ const Button: FC<Props> = ({ children, fullWidth, className, ...props }) => {
       )}
       {...props}
     >
-      {children}
+      {loading ? <Spinner /> : children}
     </button>
   );
 };

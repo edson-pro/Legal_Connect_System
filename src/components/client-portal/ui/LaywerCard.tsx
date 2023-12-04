@@ -7,9 +7,10 @@ const lawyerPracticeArea = ["Family law", "Tax law", "Health law"];
 
 const LaywerCard = () => {
   const navigate = useNavigate();
-  const goToLawyerProfile = (lawyerId: string) => navigate(`lawyers/${lawyerId}`);
+  const goToLawyerProfile = (lawyerId: string) => navigate(`/client-portal/lawyers/${lawyerId}`);
+
   return (
-    <div className="flex flex-col max-w-sm px-4 pt-5 pb-4 border border-gray-200/70 rounded-2xl gap-y-4">
+    <div className="flex flex-col w-full px-4 pt-5 pb-4 border border-gray-200/70 rounded-2xl gap-y-4">
       <div className="flex justify-between">
         <div className="flex items-center gap-2">
           <span className="inline-block w-12 h-12">

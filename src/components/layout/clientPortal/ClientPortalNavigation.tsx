@@ -1,4 +1,5 @@
 import ClientPortalNavBar from "components/lawyer-dashboard/ClientPortalNavBar";
+import CenterContent from "components/wrappers/CenterContent";
 import { Outlet } from "react-router-dom";
 
 const ClientPortalNavigation = () => {
@@ -6,8 +7,15 @@ const ClientPortalNavigation = () => {
     <div className="flex flex-col h-full min-h-screen">
       <ClientPortalNavBar />
       <div className="flex flex-col flex-1 h-full">
-        <Outlet />
+        <CenterContent>
+          <Outlet />
+        </CenterContent>
       </div>
+      <footer className="flex justify-center py-6 border-t ">
+        <span className="text-[#9D9D9D]">
+          Copyright © 2023 <span className="text-primary-blue">Legal connect</span>
+        </span>
+      </footer>
     </div>
   );
 };

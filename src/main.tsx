@@ -10,7 +10,9 @@ import ClientPortalOnboarding from "pages/ClientPortalOnboarding";
 import Home from "pages/Home.tsx";
 import Login from "pages/Login.tsx";
 import SignUp from "pages/SignUp.tsx";
+import ClientCaseDetails from "pages/client-portal/ClientCaseDetails";
 import ClientPortalHome from "pages/client-portal/ClientPortalHome";
+import FindLawyerPage from "pages/client-portal/FindLawyerPage";
 import LawyerProfile from "pages/client-portal/LawyerProfile";
 import CaseDetailsPage from "pages/lawyer-dashboard/CaseDetailsPage";
 import CasesPage from "pages/lawyer-dashboard/CasesPage";
@@ -20,6 +22,7 @@ import ClientSignup from "pages/signup/ClientSignup";
 import LawyerSignup from "pages/signup/LawyerSignup";
 import { StrictMode } from "react";
 import ReactDOM from "react-dom/client";
+import { Toaster } from "react-hot-toast";
 import {
   Route,
   RouterProvider,
@@ -49,7 +52,12 @@ const router = createBrowserRouter(
           <Route element={<ClientPortalNavigation />}>
             <Route index element={<ClientPortalHome />} />
             <Route path="lawyers">
+              <Route index element={<FindLawyerPage />} />
               <Route path=":id" element={<LawyerProfile />} />
+            </Route>
+            <Route path="cases">
+              <Route index element={null} />
+              <Route path=":id" element={<ClientCaseDetails />} />
             </Route>
           </Route>
           <Route path="onboarding">
@@ -76,6 +84,7 @@ const router = createBrowserRouter(
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <StrictMode>
+    <Toaster />
     <RouterProvider router={router} />
   </StrictMode>
 );
