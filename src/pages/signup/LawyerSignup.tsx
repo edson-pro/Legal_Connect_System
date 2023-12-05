@@ -1,4 +1,7 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import lockpadIcon from "assets/icons/lockpad.svg";
+import axios, { AxiosError } from "axios";
 import AuthStepperFormBreadCrumps from "components/authPages/AuthStepperFormBreadCrumbs";
 import Button from "components/ui/Button";
 import FileInputField from "components/ui/inputs/FileInputField";
@@ -6,9 +9,11 @@ import InputField from "components/ui/inputs/InputField";
 import TagRadioButton from "components/ui/inputs/TagRadioButton";
 import { lawyersPracticeAreas } from "data/laywers";
 import { ChangeEvent, MouseEvent, useState } from "react";
+import toast from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
 
 const formTitles = [
+  "Personal information",
   "Personal information",
   "Proffessional information",
   "Practise areas",
@@ -16,15 +21,50 @@ const formTitles = [
   "Verify Your Email Address",
 ];
 
+const errorToastClasses = "px-12 py-10 border border-red-400/30 h-[60px]";
+
 const LawyerSignup = () => {
   const [formStep, setFormStep] = useState(1);
   const [selectedPracticeArea, setSelectedPracticeArea] = useState<string>();
   const navigate = useNavigate();
+  const [formData, setFormData] = useState<any>({});
 
-  const handleContinue = (e: MouseEvent<HTMLButtonElement>) => {
+  const handleContinue = async (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
+
+    if (formStep === 3) {
+      const userData = {
+        ...formData,
+        names: formData.firstName + " " + formData.lastName,
+        law_firm_address: "f93fbe9f-323b-4083-b786-4836577a9eef",
+      };
+
+      const { firstName, lastName, ...goodData } = userData;
+
+      try {
+        await axios.post("http://api.legalc.net/api/v1/users/lawyers", goodData);
+        toast.success("lawyer created successfully");
+        navigate("/login");
+      } catch (error) {
+        if (error instanceof AxiosError) {
+          toast.error(error.response?.data.message, {
+            className: errorToastClasses,
+          });
+        } else
+          toast.error("error occured", {
+            className: errorToastClasses,
+          });
+      }
+      return;
+    }
+
     if (formStep === 5) return navigate("/account-confirmation-status");
     setFormStep((prev) => prev + 1);
+  };
+
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = event.target;
+    setFormData((prev: any) => ({ ...prev, [name]: value }));
   };
 
   const handleSelectedPracticeAreaChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -36,7 +76,7 @@ const LawyerSignup = () => {
 
   return (
     <div
-      className={`flex flex-col mt-32 ml-24 ${formStep === 3 ? "max-w-[494px]" : "max-w-[384px]"}`}
+      className={`flex flex-col mt-32 ml-24 ${formStep === 4 ? "max-w-[494px]" : "max-w-[384px]"}`}
     >
       <AuthStepperFormBreadCrumps />
       <form className="flex flex-col my-auto justify-self-center gap-4">
@@ -59,22 +99,80 @@ const LawyerSignup = () => {
         )}
         {formStep === 1 && (
           <>
-            <InputField label="First name" placeholder="Enter your first name" />
-            <InputField label="Last name" placeholder="Enter your last name" />
-            <InputField label="Email" type="email" placeholder="Enter your email" />
-            <InputField label="Phone number" placeholder="Enter your phone number" />
+            <InputField
+              label="First name"
+              placeholder="Enter your first name"
+              name="firstName"
+              required
+              onChange={handleChange}
+            />
+            <InputField
+              label="Last name"
+              placeholder="Enter your last name"
+              name="lastName"
+              required
+              onChange={handleChange}
+            />
+            <InputField
+              label="Email"
+              type="email"
+              required
+              placeholder="Enter your email"
+              name="email"
+              onChange={handleChange}
+            />
+            <InputField
+              label="Phone number"
+              placeholder="Enter your phone number"
+              name="telephone"
+              required
+              onChange={handleChange}
+            />
           </>
         )}
 
         {formStep === 2 && (
           <>
-            <InputField label="Law firm" placeholder="Enter Law firm name" />
-            <InputField label="Bar licence number" placeholder="Enter licence number" />
-            <InputField label="State/province of licence" placeholder="Province of licence" />
+            <InputField
+              label="Id or passport number"
+              placeholder="Enter Id /Passport"
+              name="id_passport_number"
+              onChange={handleChange}
+            />
+            <InputField
+              label="Create Password"
+              placeholder="Create password"
+              type="password"
+              name="password"
+              onChange={handleChange}
+            />
+            <InputField label="Confirm Password" type="password" placeholder="Confirm  password" />
           </>
         )}
 
         {formStep === 3 && (
+          <>
+            <InputField
+              label="Law firm"
+              placeholder="Enter Law firm name"
+              name="law_firm"
+              onChange={handleChange}
+            />
+            <InputField
+              label="Bar licence number"
+              placeholder="Enter licence number"
+              name="law_firm_license_number"
+              onChange={handleChange}
+            />
+            {/* <InputField
+              label="State/province of licence"
+              placeholder="Province of licence"
+              name="law_firm_license_number"
+            /> */}
+          </>
+        )}
+
+        {formStep === 4 && (
           <div className="flex flex-wrap gap-4">
             {lawyersPracticeAreas.map((area, index) => (
               <TagRadioButton

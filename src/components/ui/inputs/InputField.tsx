@@ -27,6 +27,7 @@ const InputField = forwardRef<HTMLInputElement, Props>(
           <input
             type={props.type ?? "text"}
             placeholder={props.placeholder}
+            required={required}
             className={twMerge(
               `w-full bg-primary-light-blue px-5 py-4 mt-2 rounded-xl border-2 active:outline outline-primary-blue border-gray-100 ${
                 error ? "border-red-600" : "border-base-content/50"
