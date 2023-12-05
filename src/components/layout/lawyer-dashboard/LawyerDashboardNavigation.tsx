@@ -10,7 +10,8 @@ import legalConnectBlueLogo from "assets/images/legal-connect-blue-logo.png";
 import Button from "components/ui/Button";
 import InputField from "components/ui/inputs/InputField";
 import { useState } from "react";
-import { NavLink, Outlet } from "react-router-dom";
+import { NavLink, Navigate, Outlet } from "react-router-dom";
+import useStore from "store/store";
 
 const navLinks = [
   {
@@ -39,6 +40,9 @@ const LawyerDashboardNavigation = () => {
   const [sidebarExpanded, setSidebarExpanded] = useState(true);
 
   const toggleSidebar = () => setSidebarExpanded((prev) => !prev);
+  const { user } = useStore((state) => state);
+
+  if (!user) return <Navigate to="/login" state={{ message: "You need to login first" }} />;
 
   return (
     <div className="relative flex h-full min-h-screen">

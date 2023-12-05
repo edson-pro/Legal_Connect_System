@@ -23,6 +23,8 @@ import LawyerSignup from "pages/signup/LawyerSignup";
 import { StrictMode } from "react";
 import ReactDOM from "react-dom/client";
 import { Toaster } from "react-hot-toast";
+import { QueryClient, QueryClientProvider } from "react-query";
+import { ReactQueryDevtools } from "react-query/devtools";
 import {
   Route,
   RouterProvider,
@@ -82,9 +84,14 @@ const router = createBrowserRouter(
   )
 );
 
+const queryClient = new QueryClient();
+
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <Toaster />
-    <RouterProvider router={router} />
+    <QueryClientProvider client={queryClient}>
+      <Toaster />
+      <RouterProvider router={router} />
+      <ReactQueryDevtools />
+    </QueryClientProvider>
   </StrictMode>
 );

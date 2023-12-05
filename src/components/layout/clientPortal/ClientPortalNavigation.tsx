@@ -1,8 +1,13 @@
 import ClientPortalNavBar from "components/lawyer-dashboard/ClientPortalNavBar";
 import CenterContent from "components/wrappers/CenterContent";
-import { Outlet } from "react-router-dom";
+import { Navigate, Outlet } from "react-router-dom";
+import useStore from "store/store";
 
 const ClientPortalNavigation = () => {
+  const { user } = useStore((state) => state);
+
+  if (!user) return <Navigate to="/login" state={{ message: "You need to login first" }} />;
+
   return (
     <div className="flex flex-col h-full min-h-screen">
       <ClientPortalNavBar />
