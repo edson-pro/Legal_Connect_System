@@ -9,8 +9,17 @@ export const loginSchema = yup.object({
 });
 
 export const generalInfoSignupSchema = yup.object({
-  fistName: yup.string().required("First name is required"),
+  firstName: yup.string().required("First name is required"),
   lastName: yup.string().required("Last name is required"),
   email: yup.string().required("Email is required").email("Enter a valid email"),
-  phoneNumber: yup.string().required("Phone number is required"),
+  telephone: yup.string().required("Phone number is required"),
+});
+
+export const passwordInfoSignupSchema = yup.object({
+  id_passport_number: yup.string().required("Id or passport is required"),
+  password: yup.string().required("Password is required"),
+  passwordConfirm: yup
+    .string()
+    .required("Password confirm is required")
+    .oneOf([yup.ref("password")], "Passwords must much"),
 });

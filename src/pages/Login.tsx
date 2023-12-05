@@ -20,9 +20,7 @@ const Login = () => {
     formState: { errors },
   } = useForm({ resolver: yupResolver(loginSchema) });
   const navigate = useNavigate();
-
   const { state } = useLocation();
-
   const { loginMutation } = useAuth();
   const { login } = useStore((state) => state);
 

@@ -7,3 +7,12 @@ export interface UserDTO {
   names: string;
   role: string;
 }
+
+export interface ClientDTO {
+  names: string;
+  email: string;
+  password: string;
+  telephone: string;
+  city_address: string;
+  id_passport_number: string;
+}
