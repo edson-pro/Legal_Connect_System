@@ -35,8 +35,8 @@ const LawyerSignup = () => {
     if (formStep === 3) {
       const userData = {
         ...formData,
+        city_address: "68d0a346-1e9a-4350-b865-982851a8fbab",
         names: formData.firstName + " " + formData.lastName,
-        law_firm_address: "f93fbe9f-323b-4083-b786-4836577a9eef",
       };
 
       const { firstName, lastName, ...goodData } = userData;
@@ -164,11 +164,12 @@ const LawyerSignup = () => {
               name="law_firm_license_number"
               onChange={handleChange}
             />
-            {/* <InputField
+            <InputField
               label="State/province of licence"
               placeholder="Province of licence"
-              name="law_firm_license_number"
-            /> */}
+              name="law_firm_address"
+              onChange={handleChange}
+            />
           </>
         )}
 
