@@ -42,17 +42,21 @@ const ClientSignup = () => {
 
   const handleFinalSubmit = async (passwordInfoFormValues: PasswordInfoFormInputs) => {
     if (generalInfoFormValues == null) return;
+    // confirm passwod is ignored since it is not needed in the backend
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const { passwordConfirm, ...otherPasswordInfo } = passwordInfoFormValues;
     const { firstName, lastName, ...rest } = generalInfoFormValues;
     const newClientData: ClientDTO = {
       ...rest,
-      ...passwordInfoFormValues,
+      ...otherPasswordInfo,
       names: `${firstName} ${lastName}`,
       city_address: "f93fbe9f-323b-4083-b786-4836577a9eef",
     };
 
     try {
       await createClientMutation.mutateAsync(newClientData);
-      navigate("/client-portal");
+      toast.success("Signed up successfully");
+      navigate("/login", { state: { message: "Login with your new credentials" } });
     } catch (error) {
       if (error instanceof AxiosError) {
         toast.error(error.response?.data.message, {

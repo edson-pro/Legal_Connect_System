@@ -1,16 +1,24 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import lockpadIcon from "assets/icons/lockpad.svg";
-import axios, { AxiosError } from "axios";
+import { AxiosError } from "axios";
 import AuthStepperFormBreadCrumps from "components/authPages/AuthStepperFormBreadCrumbs";
+import GeneralInfoForm from "components/authPages/signup-forms/GeneralInfoForm";
+import LawyerLawFirmInfoForm from "components/authPages/signup-forms/LawyerLawFirmInfoForm";
+import PasswordInfoForm from "components/authPages/signup-forms/PasswordInfoForm";
 import Button from "components/ui/Button";
 import FileInputField from "components/ui/inputs/FileInputField";
-import InputField from "components/ui/inputs/InputField";
 import TagRadioButton from "components/ui/inputs/TagRadioButton";
 import { lawyersPracticeAreas } from "data/laywers";
-import { ChangeEvent, MouseEvent, useState } from "react";
+import useAuth from "hooks/UseAuth";
+import { ChangeEvent, useRef, useState } from "react";
 import toast from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
+import { LawyerDTO } from "types/api";
+import {
+  GeneralInfoFormInputs,
+  LawyerLawFirmInfoFormInput,
+  LaywerSignupFormStep,
+  PasswordInfoFormInputs,
+} from "types/auth";
 
 const formTitles = [
   "Personal information",
@@ -23,48 +31,40 @@ const formTitles = [
 
 const errorToastClasses = "px-12 py-10 border border-red-400/30 h-[60px]";
 
+type LaywerSignupFormInputs = GeneralInfoFormInputs & PasswordInfoFormInputs;
+
 const LawyerSignup = () => {
-  const [formStep, setFormStep] = useState(1);
+  const [formStep, setFormStep] = useState<LaywerSignupFormStep>(1);
   const [selectedPracticeArea, setSelectedPracticeArea] = useState<string>();
   const navigate = useNavigate();
-  const [formData, setFormData] = useState<any>({});
+  const { createLawyerMutation } = useAuth();
 
-  const handleContinue = async (e: MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault();
+  const [lawyerSignupData, setLawyerSignupData] = useState<LaywerSignupFormInputs>(
+    {} as LaywerSignupFormInputs
+  );
 
-    if (formStep === 3) {
-      const userData = {
-        ...formData,
-        city_address: "68d0a346-1e9a-4350-b865-982851a8fbab",
-        names: formData.firstName + " " + formData.lastName,
-      };
+  const generalInfoFormRef = useRef<HTMLFormElement>(null);
+  const passwordInfoFormRef = useRef<HTMLFormElement>(null);
+  const lawFirmInfoForm = useRef<HTMLFormElement>(null);
 
-      const { firstName, lastName, ...goodData } = userData;
-
-      try {
-        await axios.post("http://api.legalc.net/api/v1/users/lawyers", goodData);
-        toast.success("lawyer created successfully");
-        navigate("/login");
-      } catch (error) {
-        if (error instanceof AxiosError) {
-          toast.error(error.response?.data.message, {
-            className: errorToastClasses,
-          });
-        } else
-          toast.error("error occured", {
-            className: errorToastClasses,
-          });
-      }
-      return;
+  const handleContinue = () => {
+    if (formStep === 1) {
+      generalInfoFormRef.current?.dispatchEvent(
+        new Event("submit", { cancelable: true, bubbles: true })
+      );
     }
 
-    if (formStep === 5) return navigate("/account-confirmation-status");
-    setFormStep((prev) => prev + 1);
-  };
+    if (formStep === 2) {
+      passwordInfoFormRef.current?.dispatchEvent(
+        new Event("submit", { cancelable: true, bubbles: true })
+      );
+    }
 
-  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = event.target;
-    setFormData((prev: any) => ({ ...prev, [name]: value }));
+    if (formStep === 3) {
+      lawFirmInfoForm.current?.dispatchEvent(
+        new Event("submit", { cancelable: true, bubbles: true })
+      );
+    }
   };
 
   const handleSelectedPracticeAreaChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -74,12 +74,49 @@ const LawyerSignup = () => {
 
   const formTitle = formTitles[formStep - 1];
 
+  const moveToStep2 = (formData: GeneralInfoFormInputs) => {
+    setLawyerSignupData((prev) => ({ ...prev, ...formData }));
+    setFormStep(2);
+  };
+
+  const moveToStep3 = (formData: PasswordInfoFormInputs) => {
+    setLawyerSignupData((prev) => ({ ...prev, ...formData }));
+    setFormStep(3);
+  };
+
+  const handleFinalSubmit = async (lawFirmInfoFormValues: LawyerLawFirmInfoFormInput) => {
+    // confirm passwod is ignored since it is not needed in the backend
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const { passwordConfirm, firstName, lastName, ...rest } = lawyerSignupData;
+    const newLawyerData: LawyerDTO = {
+      ...rest,
+      ...lawFirmInfoFormValues,
+      city_address: "68d0a346-1e9a-4350-b865-982851a8fbab",
+      names: `${firstName} ${lastName}`,
+    };
+
+    try {
+      await createLawyerMutation.mutateAsync(newLawyerData);
+      toast.success("Signed up successfully");
+      navigate("/login", { state: { message: "Login with your new credentials" } });
+    } catch (error) {
+      if (error instanceof AxiosError) {
+        toast.error(error.response?.data.message, {
+          className: errorToastClasses,
+        });
+      } else
+        toast.error("error occured", {
+          className: errorToastClasses,
+        });
+    }
+  };
+
   return (
     <div
       className={`flex flex-col mt-32 ml-24 ${formStep === 4 ? "max-w-[494px]" : "max-w-[384px]"}`}
     >
-      <AuthStepperFormBreadCrumps />
-      <form className="flex flex-col my-auto justify-self-center gap-4">
+      <AuthStepperFormBreadCrumps formStep={formStep} />
+      <div className="flex flex-col my-auto justify-self-center gap-4">
         {formStep === 5 && (
           <span className="mb-5">
             <img
@@ -97,80 +134,14 @@ const LawyerSignup = () => {
             <span className="mt-1 text-primary-blue">Janusz Karpel@gmail.com</span>
           </div>
         )}
-        {formStep === 1 && (
-          <>
-            <InputField
-              label="First name"
-              placeholder="Enter your first name"
-              name="firstName"
-              required
-              onChange={handleChange}
-            />
-            <InputField
-              label="Last name"
-              placeholder="Enter your last name"
-              name="lastName"
-              required
-              onChange={handleChange}
-            />
-            <InputField
-              label="Email"
-              type="email"
-              required
-              placeholder="Enter your email"
-              name="email"
-              onChange={handleChange}
-            />
-            <InputField
-              label="Phone number"
-              placeholder="Enter your phone number"
-              name="telephone"
-              required
-              onChange={handleChange}
-            />
-          </>
-        )}
+        {formStep === 1 && <GeneralInfoForm ref={generalInfoFormRef} onValidSubmit={moveToStep2} />}
 
         {formStep === 2 && (
-          <>
-            <InputField
-              label="Id or passport number"
-              placeholder="Enter Id /Passport"
-              name="id_passport_number"
-              onChange={handleChange}
-            />
-            <InputField
-              label="Create Password"
-              placeholder="Create password"
-              type="password"
-              name="password"
-              onChange={handleChange}
-            />
-            <InputField label="Confirm Password" type="password" placeholder="Confirm  password" />
-          </>
+          <PasswordInfoForm ref={passwordInfoFormRef} onValidSubmit={moveToStep3} />
         )}
 
         {formStep === 3 && (
-          <>
-            <InputField
-              label="Law firm"
-              placeholder="Enter Law firm name"
-              name="law_firm"
-              onChange={handleChange}
-            />
-            <InputField
-              label="Bar licence number"
-              placeholder="Enter licence number"
-              name="law_firm_license_number"
-              onChange={handleChange}
-            />
-            <InputField
-              label="State/province of licence"
-              placeholder="Province of licence"
-              name="law_firm_address"
-              onChange={handleChange}
-            />
-          </>
+          <LawyerLawFirmInfoForm ref={lawFirmInfoForm} onValidSubmit={handleFinalSubmit} />
         )}
 
         {formStep === 4 && (
@@ -196,7 +167,7 @@ const LawyerSignup = () => {
           </>
         )}
 
-        <Button onClick={handleContinue} className="mt-4">
+        <Button onClick={handleContinue} loading={createLawyerMutation.isLoading} className="mt-4">
           Continue
         </Button>
         <span className="self-center mt-2">
@@ -205,7 +176,7 @@ const LawyerSignup = () => {
             Login
           </Link>
         </span>
-      </form>
+      </div>
     </div>
   );
 };

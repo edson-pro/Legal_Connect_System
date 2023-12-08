@@ -2,14 +2,15 @@ import documentIcon from "assets/icons/document.svg";
 import placeIcon from "assets/icons/place.svg";
 import suitcaseIcon from "assets/icons/suitcase.svg";
 import userIcon from "assets/icons/user.svg";
-import { useState } from "react";
+import { FC } from "react";
+import { LaywerSignupFormStep } from "types/auth";
 
 type LineWidthClass = "w-1/5" | "w-1/2" | "w-[80%]" | "w-full";
-type FormStep = 1 | 2 | 3 | 4;
+interface Props {
+  formStep: LaywerSignupFormStep;
+}
 
-const AuthStepperFormBreadCrumps = () => {
-  const [formStep, setFormStep] = useState<FormStep>(1);
-
+const AuthStepperFormBreadCrumps: FC<Props> = ({ formStep }) => {
   const setLineWidthClass = (): LineWidthClass => {
     if (formStep === 1) return "w-1/5";
     if (formStep === 2) return "w-1/2";
@@ -17,9 +18,10 @@ const AuthStepperFormBreadCrumps = () => {
     return "w-full";
   };
 
-  const changeStep = (newStep: FormStep) => {
+  // Todo: in the future clicking the step icon should change the the form step dynamically
+  const changeStep = (newStep: LaywerSignupFormStep) => {
     if (formStep === newStep) return;
-    setFormStep(newStep);
+    // setFormStep(newStep);
   };
 
   return (

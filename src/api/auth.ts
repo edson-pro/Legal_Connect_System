@@ -1,5 +1,5 @@
 import { LoginDTO } from "types";
-import { ClientDTO, UserDTO } from "types/api";
+import { ClientDTO, LawyerDTO, UserDTO } from "types/api";
 import appAxios from "./axios";
 
 export const handleLogin = async (loginInfo: LoginDTO): Promise<UserDTO> => {
@@ -9,5 +9,10 @@ export const handleLogin = async (loginInfo: LoginDTO): Promise<UserDTO> => {
 
 export const createNewClient = async (clientData: ClientDTO): Promise<ClientDTO> => {
   const response = await appAxios.post("/users/clients", clientData);
+  return response.data.data;
+};
+
+export const createNewLawyer = async (lawyerData: LawyerDTO): Promise<LawyerDTO> => {
+  const response = await appAxios.post("/users/lawyers", lawyerData);
   return response.data.data;
 };

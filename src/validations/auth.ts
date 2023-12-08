@@ -17,9 +17,18 @@ export const generalInfoSignupSchema = yup.object({
 
 export const passwordInfoSignupSchema = yup.object({
   id_passport_number: yup.string().required("Id or passport is required"),
-  password: yup.string().required("Password is required"),
+  password: yup
+    .string()
+    .required("Password is required")
+    .min(8, "Password should be at least 8 characters"),
   passwordConfirm: yup
     .string()
     .required("Password confirm is required")
     .oneOf([yup.ref("password")], "Passwords must much"),
+});
+
+export const lawyerLawFirmSignupSchema = yup.object({
+  law_firm: yup.string().required("Law firm is required"),
+  law_firm_license_number: yup.string().required("Law firm license number is required"),
+  law_firm_address: yup.string().required("Law firm address is required"),
 });
